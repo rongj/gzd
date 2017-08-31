@@ -16,12 +16,18 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example', require('./components/Example.vue'));
-import Example from './components/Example.vue';
+
+import App from './App.vue'
+import router from './router'
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+
+Vue.use(ElementUI)
 
 const app = new Vue({
     el: '#app',
-    template: '<Example/>',
-    components: {
-		Example
-    }
+    router,
+    template: '<App/>',
+    components: { App }
 });
