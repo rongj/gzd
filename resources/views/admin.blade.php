@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Laravel</title>
+        <title>后台管理框架</title>
         
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     </head>

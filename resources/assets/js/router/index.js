@@ -2,11 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import layout from '../pages/layout.vue'
 import index from '../pages/index.vue'
+import list from '../pages/list.vue'
+import notFound from '../pages/notFound.vue'
 
 Vue.use(Router)
 
 export default new Router({
-	mode: 'hash',
+	mode: 'history',
+	base: '/admin',
 	routes: [
 		{
 			path: '/',
@@ -17,10 +20,14 @@ export default new Router({
 					path: '',
 					component: index
 				},
-				// {
-				// 	path: '/hot',
-				// 	component: hotRecend
-				// },
+				{
+					path: 'list',
+					component: list
+				},
+				{
+					path: '*',
+					component: notFound
+				},
 			]
 		}
 	]

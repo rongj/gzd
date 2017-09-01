@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin');
+});
+
+
+Route::group(['prefix' => 'admin'], function () {
+	Route::get('/{path?}', function (){
+		return view('admin');
+	})->where('path', '[\/\w\.-]*');
 });
