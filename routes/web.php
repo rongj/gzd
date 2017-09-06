@@ -21,3 +21,24 @@ Route::group(['prefix' => 'admin'], function () {
 		return view('admin');
 	})->where('path', '[\/\w\.-]*');
 });
+
+Route::get('/users', 'UsersController@index')->name('users');
+
+Route::get('/users/create', 'UsersController@create');
+
+Route::get('/user/{name?}', function($name = 'jhon') {
+	// return 'hello'.$name;
+	$route = Route::current();
+	$name = Route::currentRouteName();
+	$action = Route::currentRouteAction();
+	dd($action);
+})->name('user');
+
+Route::get('userage/{age}', function($age) {
+	return 'age:'.$age;
+})->middleware('checkage');
+
+Route::post('/users/add', 'UsersController@add');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
