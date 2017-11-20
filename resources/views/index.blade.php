@@ -7,12 +7,12 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>后台管理框架</title>
+        <title>首页</title>
         
-        <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/home.css') }}">
     </head>
     <body>
         <div id="app"></div>
-        <script src="{{ mix('js/admin.js') }}"></script>
+        <script src="{{ mix('js/home.js') }}"></script>
     </body>
 </html>

@@ -1,0 +1,49 @@
+body {
+	background: #eef5f9;
+}
+
+.main-wrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.main-header {
+	
+}
+.header-logo {
+	line-height: 70px;
+	img {
+		height: 50px;
+	}
+	h2 {
+		font-size: 28px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.search-form {
+	display: block;
+	width: 200px;
+	position: relative;
+	height: 50px;
+	line-height: 50px;
+	margin-top: 10px;
+	border-bottom: 1px solid #dbdbdb;
+	input {
+		display: block;
+		width: 100%;
+		line-height: 50px;
+		background: none;
+		border: none;
+		outline: none;
+		font-size: 14px;
+		text-align: center;
+	}
+	&.active {
+		border-bottom: 1px solid #4787fb;
+		input {
+			text-align: left;
+		}
+	}
+}

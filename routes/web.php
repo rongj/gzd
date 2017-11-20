@@ -11,20 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('admin');
-});
+Route::get('/{path?}', function () {
+    return view('index');
+})->where('path', '[^\/admin].*');;
 
+Route::get('/admin/{path?}', function (){
+	return view('admin');
+})->where('path', '[\/\w\.-]*');
 
-Route::group(['prefix' => 'admin'], function () {
-	Route::get('/{path?}', function (){
-		return view('admin');
-	})->where('path', '[\/\w\.-]*');
-});
+// Route::group(['prefix' => 'admin'], function () {
+// 	Route::get('/admin/{path?}', function (){
+// 		return view('admin');
+// 	})->where('path', '[\/\w\.-]*');
+// });
 
-Route::get('/users', 'UsersController@index')->name('users');
+// Route::get('/users', 'UsersController@index')->name('users');
 
-Route::get('/users/create', 'UsersController@create');
+// Route::get('/users/create', 'UsersController@create');
 
 // Route::get('/user/{name?}', function($name = 'jhon') {
 // 	echo url()->previous();
@@ -35,22 +38,22 @@ Route::get('/users/create', 'UsersController@create');
 // 	dd($action);
 // })->name('user');
 
-Route::get('userage/{age}', function($age) {
-	return 'age:'.$age;
-})->middleware('checkage');
+// Route::get('userage/{age}', function($age) {
+// 	return 'age:'.$age;
+// })->middleware('checkage');
 
-Route::post('/users/add', 'UsersController@add');
-Auth::routes();
+// Route::post('/users/add', 'UsersController@add');
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('test', function () {
-	return view('test', [ 'name' => 'Samantha', 'records' => 0 , 'data' => array(
-		'a' => 1,
-		'b' => 2
-	)]);
-});
+// Route::get('test', function () {
+// 	return view('test', [ 'name' => 'Samantha', 'records' => 0 , 'data' => array(
+// 		'a' => 1,
+// 		'b' => 2
+// 	)]);
+// });
 
 // 文章
 Route::get('/post/create', 'PostController@create');
