@@ -3,7 +3,7 @@
 		<div class="main-header clearfix">
 			<div class="header-logo fl">
 				<img src="../assets/haski.png" alt="">
-				<h2>我的网站</h2>
+				<h2></h2>
 			</div>
 <!-- 			<div class="header-nav">
 				<a href="">版块</a>
@@ -17,16 +17,18 @@
 			</div>
 		</div>
 		<div class="main-content">
-			<div class="panel-list" v-for="(item, i) in itemlist">
-				<div class="panel-item" :key="i">
-					<div class="panel-icon">
-						<img :src="item.img" alt="">
-					</div>
-					<div class="panel-title">
-						<span>1</span>
-						<h3>{{item.name}}</h3>
-					</div>
-					<p>{{item.descript}}</p>
+			<div class="panel-list clearfix">
+				<div class="panel-item" v-for="(item, i) in itemlist" :key="i">
+					<a :href="`category/${item.id}`">
+						<div class="panel-icon">
+							<img :src="item.img" alt="">
+						</div>
+						<div class="panel-title">
+							<span>1</span>
+							<h3>{{item.name}}</h3>
+						</div>
+						<p>{{item.descript}}</p>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -41,56 +43,92 @@
 					{
 						id: 1,
 						name: 'HTML5',
-						img: '/images/haski.png',
-						descript: '下一代的 HTML'
+						img: '/images/html5.jpg',
+						descript: '下一代的HTML'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 2,
+						name: 'CSS3',
+						img: '/images/css3.jpg',
+						descript: 'CSS技术的升级版本'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 3,
+						name: 'JavaScript',
+						img: '/images/js.jpg',
+						descript: '互联网最流行的脚本语言'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 4,
+						name: 'Nodejs',
+						img: '/images/nodejs.jpg',
+						descript: '事件驱动、非阻塞式 I/O'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 5,
+						name: 'Typescript',
+						img: '/images/ts.jpg',
+						descript: 'JavaScript的超集'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 6,
+						name: 'Python',
+						img: '/images/python.jpg',
+						descript: '人生苦短，我学Python'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 7,
+						name: 'PHP',
+						img: '/images/php.jpg',
+						descript: '世界上最好的编程语言'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 8,
+						name: 'Linux',
+						img: '/images/linux.jpg',
+						descript: '性能稳定的多用户网络操作系统'
+					},
+					// {
+					// 	id: 1,
+					// 	name: 'Go',
+					// 	img: '/images/go.jpg',
+					// 	descript: '下一代的 HTML'
+					// },
+					// {
+					// 	id: 1,
+					// 	name: 'Java',
+					// 	img: '/images/java.jpg',
+					// 	descript: '下一代的 HTML'
+					// },
+					// {
+					// 	id: 1,
+					// 	name: 'Ruby',
+					// 	img: '/images/ruby.jpg',
+					// 	descript: '下一代的 HTML'
+					// },
+					// {
+					// 	id: 1,
+					// 	name: '大数据',
+					// 	img: '/images/bigdata.jpg',
+					// 	descript: '下一代的 HTML'
+					// },
+					{
+						id: 9,
+						name: 'Tools',
+						img: '/images/tools.jpg',
+						descript: '工欲善其事，必先利其器'
 					},
 					{
-						id: 1,
-						name: 'HTML5',
-						img: '/images/h5.png',
-						descript: '下一代的 HTML'
+						id: 10,
+						name: 'UI',
+						img: '/images/photoshop.jpg',
+						descript: '大道至简'
+					},
+					{
+						id: 11,
+						name: 'Jobs',
+						img: '/images/webapp.jpg',
+						descript: '程序员招聘指南'
 					},
 				]
 			}
@@ -99,5 +137,6 @@
 </script>
 
 <style lang="scss">
+
 
 </style>

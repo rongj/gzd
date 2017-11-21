@@ -15381,7 +15381,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n@charset \"UTF-8\";\nbody, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n  font-style: normal;\n  text-decoration: none;\n  border: none;\n  font-family: \"Microsoft Yahei\",sans-serif;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-font-smoothing: antialiased;\n}\nbody:focus, div:focus, span:focus, header:focus, footer:focus, nav:focus, section:focus, aside:focus, article:focus, ul:focus, dl:focus, dt:focus, dd:focus, li:focus, a:focus, p:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, i:focus, b:focus, textarea:focus, button:focus, input:focus, select:focus, figure:focus, figcaption:focus {\n    outline: none;\n}\n\n/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/\n::-webkit-scrollbar {\n  width: 0px;\n  height: 0px;\n  background-color: #F5F5F5;\n}\n\n/*定义滚动条轨道 内阴影+圆角*/\n::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 1px transparent;\n  border-radius: 10px;\n  background-color: #F5F5F5;\n}\n\n/*定义滑块 内阴影+圆角*/\n::-webkit-scrollbar-thumb {\n  border-radius: 10px;\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  background-color: #555;\n}\ninput[type=\"button\"], input[type=\"submit\"], input[type=\"search\"], input[type=\"reset\"] {\n  -webkit-appearance: none;\n}\ntextarea {\n  -webkit-appearance: none;\n}\nh1, h2, h3, h4, h5, h6 {\n  font-weight: normal;\n}\nimg {\n  vertical-align: middle;\n  border: none;\n}\nhtml, body {\n  height: 100%;\n  width: 100%;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n.clearfix {\n  zoom: 1;\n}\n.fl {\n  float: left;\n}\n.fr {\n  float: right;\n}\n", ""]);
+exports.push([module.i, "\n@charset \"UTF-8\";\nbody, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {\n  padding: 0;\n  margin: 0;\n  list-style: none;\n  font-style: normal;\n  text-decoration: none;\n  border: none;\n  font-family: \"Microsoft Yahei\",sans-serif;\n  -webkit-tap-highlight-color: transparent;\n  -webkit-font-smoothing: antialiased;\n}\nbody:focus, div:focus, span:focus, header:focus, footer:focus, nav:focus, section:focus, aside:focus, article:focus, ul:focus, dl:focus, dt:focus, dd:focus, li:focus, a:focus, p:focus, h1:focus, h2:focus, h3:focus, h4:focus, h5:focus, h6:focus, i:focus, b:focus, textarea:focus, button:focus, input:focus, select:focus, figure:focus, figcaption:focus {\n    outline: none;\n}\n\n/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/\n::-webkit-scrollbar {\n  width: 0px;\n  height: 0px;\n  background-color: #F5F5F5;\n}\n\n/*定义滚动条轨道 内阴影+圆角*/\n::-webkit-scrollbar-track {\n  -webkit-box-shadow: inset 0 0 1px transparent;\n  border-radius: 10px;\n  background-color: #F5F5F5;\n}\n\n/*定义滑块 内阴影+圆角*/\n::-webkit-scrollbar-thumb {\n  border-radius: 10px;\n  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\n  background-color: #555;\n}\ninput[type=\"button\"], input[type=\"submit\"], input[type=\"search\"], input[type=\"reset\"] {\n  -webkit-appearance: none;\n}\ntextarea {\n  -webkit-appearance: none;\n}\nh1, h2, h3, h4, h5, h6 {\n  font-weight: normal;\n}\nimg {\n  vertical-align: middle;\n  border: none;\n}\nhtml, body {\n  height: 100%;\n  width: 100%;\n}\n* {\n  box-sizing: border-box;\n}\n.clearfix:after {\n  content: '';\n  display: block;\n  clear: both;\n}\n.clearfix {\n  zoom: 1;\n}\n.fl {\n  float: left;\n}\n.fr {\n  float: right;\n}\na {\n  color: #333;\n}\n", ""]);
 
 // exports
 
@@ -54511,10 +54511,12 @@ window.Vue = __webpack_require__(3);
 
 
 
+// import ElementUI from 'element-ui'
 
 
 
-Vue.use(__WEBPACK_IMPORTED_MODULE_2_element_ui___default.a);
+// Vue.use(ElementUI)
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_element_ui__["Popover"]);
 
 var app = new Vue({
   el: '#app',
@@ -54533,6 +54535,9 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_vue__ = __webpack_require__(137);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pages_home_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__pages_home_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_category_vue__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pages_category_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__pages_category_vue__);
+
 
 
 
@@ -54547,6 +54552,10 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 		path: '/',
 		component: __WEBPACK_IMPORTED_MODULE_2__pages_home_vue___default.a,
 		name: 'home'
+	}, {
+		path: '/category/:id',
+		component: __WEBPACK_IMPORTED_MODULE_3__pages_category_vue___default.a,
+		name: 'category'
 	}]
 }));
 
@@ -54665,12 +54674,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "main-wrap"
   }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "main-content"
+  }, [_c('div', {
+    staticClass: "panel-list clearfix"
   }, _vm._l((_vm.itemlist), function(item, i) {
     return _c('div', {
-      staticClass: "panel-list"
-    }, [_c('div', {
       key: i,
       staticClass: "panel-item"
+    }, [_c('a', {
+      attrs: {
+        "href": ("category/" + (item.id))
+      }
     }, [_c('div', {
       staticClass: "panel-icon"
     }, [_c('img', {
@@ -54681,7 +54694,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })]), _vm._v(" "), _c('div', {
       staticClass: "panel-title"
     }, [_c('span', [_vm._v("1")]), _vm._v(" "), _c('h3', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('p', [_vm._v(_vm._s(item.descript))])])])
-  }))])
+  }))])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "main-header clearfix"
@@ -54692,7 +54705,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "src": __webpack_require__(142),
       "alt": ""
     }
-  }), _vm._v(" "), _c('h2', [_vm._v("我的网站")])]), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('h2')]), _vm._v(" "), _c('div', {
     staticClass: "header-search fr"
   }, [_c('form', {
     staticClass: "search-form"
@@ -54752,6 +54765,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -54759,48 +54774,83 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			itemlist: [{
 				id: 1,
 				name: 'HTML5',
-				img: '/images/haski.png',
-				descript: '下一代的 HTML'
+				img: '/images/html5.jpg',
+				descript: '下一代的HTML'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 2,
+				name: 'CSS3',
+				img: '/images/css3.jpg',
+				descript: 'CSS技术的升级版本'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 3,
+				name: 'JavaScript',
+				img: '/images/js.jpg',
+				descript: '互联网最流行的脚本语言'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 4,
+				name: 'Nodejs',
+				img: '/images/nodejs.jpg',
+				descript: '事件驱动、非阻塞式 I/O'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 5,
+				name: 'Typescript',
+				img: '/images/ts.jpg',
+				descript: 'JavaScript的超集'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 6,
+				name: 'Python',
+				img: '/images/python.jpg',
+				descript: '人生苦短，我学Python'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 7,
+				name: 'PHP',
+				img: '/images/php.jpg',
+				descript: '世界上最好的编程语言'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 8,
+				name: 'Linux',
+				img: '/images/linux.jpg',
+				descript: '性能稳定的多用户网络操作系统'
+			},
+			// {
+			// 	id: 1,
+			// 	name: 'Go',
+			// 	img: '/images/go.jpg',
+			// 	descript: '下一代的 HTML'
+			// },
+			// {
+			// 	id: 1,
+			// 	name: 'Java',
+			// 	img: '/images/java.jpg',
+			// 	descript: '下一代的 HTML'
+			// },
+			// {
+			// 	id: 1,
+			// 	name: 'Ruby',
+			// 	img: '/images/ruby.jpg',
+			// 	descript: '下一代的 HTML'
+			// },
+			// {
+			// 	id: 1,
+			// 	name: '大数据',
+			// 	img: '/images/bigdata.jpg',
+			// 	descript: '下一代的 HTML'
+			// },
+			{
+				id: 9,
+				name: 'Tools',
+				img: '/images/tools.jpg',
+				descript: '工欲善其事，必先利其器'
 			}, {
-				id: 1,
-				name: 'HTML5',
-				img: '/images/h5.png',
-				descript: '下一代的 HTML'
+				id: 10,
+				name: 'UI',
+				img: '/images/photoshop.jpg',
+				descript: '大道至简'
+			}, {
+				id: 11,
+				name: 'Jobs',
+				img: '/images/webapp.jpg',
+				descript: '程序员招聘指南'
 			}]
 		};
 	}
@@ -54811,6 +54861,348 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports) {
 
 module.exports = "/images/haski.png?f81f893728195c9cf82f64d0955b635a";
+
+/***/ }),
+/* 143 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(148)
+}
+var Component = __webpack_require__(9)(
+  /* script */
+  __webpack_require__(146),
+  /* template */
+  __webpack_require__(150),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-d52e3fce",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "E:\\study\\php\\gzd\\resources\\assets\\js\\pages\\category.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] category.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-loader/node_modules/vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d52e3fce", Component.options)
+  } else {
+    hotAPI.reload("data-v-d52e3fce", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 144 */,
+/* 145 */,
+/* 146 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	data: function data() {
+		return {
+			itemlist: [{
+				id: 1,
+				name: 'React.js',
+				img: '/images/react.jpg',
+				descript: '声明式的，高效的，灵活的Js库'
+			}, {
+				id: 2,
+				name: 'Vue',
+				img: '/images/vue.jpg',
+				descript: '直观、快速、简洁的 MVVM 框架'
+			}, {
+				id: 3,
+				name: 'Angular',
+				img: '/images/angular.jpg',
+				descript: 'Google推出的MVVM框架'
+			}, {
+				id: 4,
+				name: 'Es6',
+				img: '/images/es.jpg',
+				descript: 'JavaScript语言的下一个版本'
+			}],
+			activeIndex: 0,
+			openList: []
+		};
+	},
+
+	methods: {
+		onHandleTab: function onHandleTab(i) {
+			this.activeIndex = i;
+		},
+		toggleLinks: function toggleLinks(i) {
+			console.log(i);
+			if (this.openList.indexOf(i) > -1) {
+				this.openList = this.openList.filter(function (l) {
+					return l != i;
+				});
+			} else {
+				this.openList.push(i);
+			}
+		}
+	}
+});
+
+/***/ }),
+/* 147 */,
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(149);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(18)("5ba74477", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/._css-loader@0.28.5@css-loader/index.js!../../../../node_modules/._vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d52e3fce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./category.vue", function() {
+     var newContent = require("!!../../../../node_modules/._css-loader@0.28.5@css-loader/index.js!../../../../node_modules/._vue-loader@12.2.2@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d52e3fce\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.6@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@12.2.2@vue-loader/lib/selector.js?type=styles&index=0!./category.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.page-header[data-v-d52e3fce] {\n  position: relative;\n  padding: 0 10px;\n}\n.page-header h2[data-v-d52e3fce] {\n    font-size: 28px;\n    font-weight: 400;\n    font-family: Raleway;\n    padding-top: 8px;\n}\n.page-header p[data-v-d52e3fce] {\n    font-size: 12px;\n}\n.page-header a[data-v-d52e3fce] {\n    color: #fff;\n}\n.page-header .el-icon-close[data-v-d52e3fce] {\n    position: absolute;\n    right: 10px;\n    top: 25px;\n    font-size: 16px;\n    cursor: pointer;\n}\n.page-header .header-back[data-v-d52e3fce] {\n    display: none;\n}\n.nav-list[data-v-d52e3fce] {\n  text-align: center;\n  margin: 20px auto;\n  border-bottom: 1px solid #dfe4ed;\n}\n.nav-list .nav-item[data-v-d52e3fce] {\n    margin: 0 20px;\n    height: 40px;\n    line-height: 40px;\n    display: inline-block;\n    font-size: 14px;\n    font-weight: 500;\n    color: #2d2f33;\n    position: relative;\n    cursor: pointer;\n}\n.nav-list .nav-item.active[data-v-d52e3fce] {\n      color: #37b5ff;\n      border-bottom: 2px solid #37b5ff;\n      font-weight: bold;\n}\n.frame-list .panel-item i[data-v-d52e3fce] {\n  display: none;\n}\n@media screen and (max-width: 768px) {\nbody[data-v-d52e3fce] {\n    background: #fff;\n}\n.page-header-wrap[data-v-d52e3fce] {\n    height: 44px;\n}\n.page-header[data-v-d52e3fce] {\n    height: 44px;\n    line-height: 44px;\n}\n.page-header h2[data-v-d52e3fce] {\n      text-align: center;\n      padding-top: 0;\n      font-size: 20px;\n      font-weight: 600;\n}\n.page-header .el-icon-close[data-v-d52e3fce], .page-header p[data-v-d52e3fce] {\n      display: none;\n}\n.page-header .header-back[data-v-d52e3fce] {\n      display: block;\n      position: absolute;\n      left: 10px;\n      top: 0;\n      font-size: 16px;\n}\n.page-header .header-back i[data-v-d52e3fce] {\n        vertical-align: -1px;\n        margin-right: 3px;\n}\n.nav-list[data-v-d52e3fce] {\n    margin: 0 auto;\n}\n.main-content[data-v-d52e3fce] {\n    background: #f8f8f8;\n}\n.tab-content[data-v-d52e3fce] {\n    margin-top: -1px;\n}\n.frame-list .panel-item i[data-v-d52e3fce] {\n    display: block;\n    position: absolute;\n    right: 15px;\n    top: 42px;\n    color: #ddd;\n}\n.frame-links[data-v-d52e3fce] {\n    clear: both;\n    margin: 0 15px;\n    border-top: 1px solid #f5f5f5;\n    background: #fff;\n    margin-bottom: -1px;\n}\n.frame-links a[data-v-d52e3fce] {\n      display: block;\n      width: 50%;\n      float: left;\n      line-height: 40px;\n      text-align: center;\n      font-size: 14px;\n      color: #666;\n      border-bottom: 1px solid #f5f5f5;\n      border-right: 1px solid #f5f5f5;\n      background: #fff;\n}\n.frame-links a[data-v-d52e3fce]:nth-child(2n) {\n        border-right: none;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "main-wrap"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "main-content"
+  }, [_c('div', {
+    staticClass: "nav-list"
+  }, [_c('span', {
+    staticClass: "nav-item",
+    class: {
+      'active': _vm.activeIndex === 0
+    },
+    on: {
+      "click": function($event) {
+        _vm.onHandleTab(0)
+      }
+    }
+  }, [_vm._v("相关框架/库")]), _vm._v(" "), _c('span', {
+    staticClass: "nav-item",
+    class: {
+      'active': _vm.activeIndex === 1
+    },
+    on: {
+      "click": function($event) {
+        _vm.onHandleTab(1)
+      }
+    }
+  }, [_vm._v("我的学习笔记")])]), _vm._v(" "), _c('div', {
+    staticClass: "tab-content"
+  }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.activeIndex === 0),
+      expression: "activeIndex === 0"
+    }],
+    staticClass: "tab-panel tab-frame"
+  }, [_c('div', {
+    staticClass: "frame-list"
+  }, _vm._l((_vm.itemlist), function(item, i) {
+    return _c('div', {
+      key: i,
+      staticClass: "panel-item"
+    }, [_c('a', {
+      attrs: {
+        "href": "javascript:;"
+      },
+      on: {
+        "click": function($event) {
+          _vm.toggleLinks(i)
+        }
+      }
+    }, [_c('div', {
+      staticClass: "panel-icon"
+    }, [_c('img', {
+      attrs: {
+        "src": item.img,
+        "alt": ""
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "panel-title"
+    }, [_vm._m(1, true), _vm._v(" "), _c('h3', [_vm._v(_vm._s(item.name))])]), _vm._v(" "), _c('p', [_vm._v(_vm._s(item.descript))]), _vm._v(" "), _c('i', {
+      class: _vm.openList.indexOf(i) > -1 ? 'el-icon-arrow-down' : 'el-icon-arrow-right'
+    })]), _vm._v(" "), _c('div', {
+      directives: [{
+        name: "show",
+        rawName: "v-show",
+        value: (_vm.openList.indexOf(i) > -1),
+        expression: "openList.indexOf(i) > -1"
+      }],
+      staticClass: "frame-links clearfix"
+    })])
+  }))]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.activeIndex === 1),
+      expression: "activeIndex === 1"
+    }],
+    staticClass: "tab-panel tab-posts"
+  }, [_c('ul', {
+    staticClass: "post-list"
+  }, _vm._l((_vm.itemlist), function(item, i) {
+    return _c('li', {
+      key: i,
+      staticClass: "post-item"
+    }, [_vm._m(2, true)])
+  }))])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "page-header-wrap"
+  }, [_c('div', {
+    staticClass: "page-header"
+  }, [_c('h2', [_vm._v("JavaScript")]), _vm._v(" "), _c('p', [_vm._v("互联网最流行的脚本语言")]), _vm._v(" "), _c('a', {
+    staticClass: "el-icon-close",
+    attrs: {
+      "href": "/"
+    }
+  }), _vm._v(" "), _c('a', {
+    staticClass: "header-back",
+    attrs: {
+      "href": "/"
+    }
+  }, [_c('i', {
+    staticClass: "el-icon-arrow-left"
+  }), _vm._v("返回")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('span', {}, [_c('em', {
+    staticClass: "el-icon-document"
+  }), _vm._v("5")])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('a', {
+    attrs: {
+      "href": ""
+    }
+  }, [_c('div', {
+    staticClass: "post-txt"
+  }, [_c('h2', [_vm._v("如何实现一个python的web后端框架")]), _vm._v(" "), _c('div', {
+    staticClass: "post-info"
+  }, [_c('span', {
+    staticClass: "post-date"
+  }, [_vm._v("2017-11-11 11:11")]), _vm._v(" "), _c('span', {
+    staticClass: "post-tags"
+  }, [_c('em', {
+    staticClass: "el-tag el-tag--default"
+  }, [_vm._v("django")]), _vm._v(" "), _c('em', {
+    staticClass: "el-tag el-tag--success"
+  }, [_vm._v("python")])])]), _vm._v(" "), _c('p', [_vm._v("可以看到非常多，这里说明一下wsgi.input 就是我们的表单传值可以看到我们做web通常需要的PATH_INFO，HTTP_USER_AGENT,QUERY_STRING,REQUEST_METHOD,SERVER_PROTOCAOL都在里面了即是说，这个environ参数给我提供了我们要的网络的所有环境参数而对于start_response这个参数，官方的说明是：")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-loader/node_modules/vue-hot-reload-api").rerender("data-v-d52e3fce", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
