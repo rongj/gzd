@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import layout from '../pages/layout.vue'
-import index from '../pages/index.vue'
-import list from '../pages/list.vue'
-import notFound from '../pages/notFound.vue'
+import layout from '../backend/layout.vue'
+import index from '../backend/index.vue'
+import category from '../backend/category.vue'
+import subplate from '../backend/subplate.vue'
+import article from '../backend/article.vue'
+import notFound from '../backend/notFound.vue'
 
 Vue.use(Router)
 
@@ -14,15 +16,26 @@ export default new Router({
 		{
 			path: '/',
 			component: layout,
-			name: '',
 			children: [
 				{
 					path: '',
-					component: index
+					component: index,
+					name: 'index',
 				},
 				{
-					path: 'list',
-					component: list
+					path: 'category',
+					component: category,
+					name: 'category',
+				},
+				{
+					path: 'subplate',
+					component: subplate,
+					name: 'subplate',
+				},
+				{
+					path: 'article',
+					component: article,
+					name: 'article',
 				},
 				{
 					path: '*',

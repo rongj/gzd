@@ -1,5 +1,5 @@
 <template>
-	<div>
-		我是热门推荐
+	<div class="list">
+		首页
 	</div>
 </template>

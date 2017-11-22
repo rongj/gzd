@@ -13,7 +13,7 @@
 
 Route::get('/{path?}', function () {
     return view('index');
-})->where('path', '[^\/admin].*');;
+})->where('path', '[^\/admin].*');
 
 Route::get('/admin/{path?}', function (){
 	return view('admin');

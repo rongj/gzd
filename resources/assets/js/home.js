@@ -22,7 +22,7 @@ import router from './router/home.js'
 
 // import ElementUI from 'element-ui'
 import { Popover } from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
+import 'element-ui/lib/theme-chalk/index.css'
 
 // Vue.use(ElementUI)
 Vue.use(Popover)
