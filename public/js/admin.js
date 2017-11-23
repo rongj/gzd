@@ -59986,8 +59986,8 @@ module.exports = function (css) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(186);
-__webpack_require__(208);
-module.exports = __webpack_require__(209);
+__webpack_require__(209);
+module.exports = __webpack_require__(210);
 
 
 /***/ }),
@@ -60051,11 +60051,11 @@ var app = new Vue({
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__backend_index_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__backend_index_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__backend_category_vue__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__backend_category_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__backend_category_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__backend_subplate_vue__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__backend_subplate_vue__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__backend_subplate_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__backend_subplate_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__backend_article_vue__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__backend_article_vue__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__backend_article_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__backend_article_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__backend_notFound_vue__ = __webpack_require__(205);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__backend_notFound_vue__ = __webpack_require__(206);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__backend_notFound_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__backend_notFound_vue__);
 
 
@@ -60487,7 +60487,7 @@ var normalizeComponent = __webpack_require__(14)
 /* script */
 var __vue_script__ = __webpack_require__(198)
 /* template */
-var __vue_template__ = __webpack_require__(199)
+var __vue_template__ = __webpack_require__(200)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -60572,7 +60572,7 @@ exports.push([module.i, "\n.table-align-center td, .table-align-center th {\n  t
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_api__ = __webpack_require__(199);
 //
 //
 //
@@ -60654,15 +60654,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
-			tableData: [{
-				id: 1,
-				name: 'HTML5',
-				cover: '/upload/Jcu02kqSXyjFTRrKMGoww70qxAljizx1jzdCYbxz.png',
-				describe: '下一代html',
-				weight: 0,
-				is_active: 1,
-				updated_at: '2017-11-11 11:11:11'
-			}],
+			tableData: [],
 			showPlateDialog: false,
 			form: {
 				name: '',
@@ -60674,16 +60666,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		};
 	},
-	created: function created() {},
+	created: function created() {
+		this.getAllPlate();
+	},
 
 
 	methods: {
+		// 获取所有版块
+		getAllPlate: function getAllPlate() {
+			var _this = this;
+
+			__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* default */].getAllPlate().then(function (res) {
+				if (res.data.code === 200) {
+					_this.tableData = res.data.data;
+				}
+			}).catch(function (err) {
+				console.error(err);
+			});
+		},
+
+
 		// 添加版块
 		handleAdd: function handleAdd() {
 			this.showPlateDialog = true;
 			this.form = {
 				weight: 0,
-				is_active: 1
+				is_active: 1,
+				cover: ''
 			};
 			this.form.title = '添加版块';
 		},
@@ -60701,32 +60710,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		handleDelete: function handleDelete(index, row) {
 			console.log(index, row);
 		},
-		handleAvatarSuccess: function handleAvatarSuccess(res, file) {
-			this.form.cover = URL.createObjectURL(file.raw);
+		handleUploadSuccess: function handleUploadSuccess(res, file) {
+			if (res.code === 200) {
+				this.form.cover = res.data.url;
+			}
+			// this.form.cover = URL.createObjectURL(file.raw);
 		},
-		beforeAvatarUpload: function beforeAvatarUpload(file) {
-			// const isJPG = file.type === 'image/jpeg';
-			// const isLt2M = file.size / 1024 / 1024 < 2;
-
-			// if (!isJPG) {
-			//   this.$message.error('上传头像图片只能是 JPG 格式!');
-			// }
-			// if (!isLt2M) {
-			//   this.$message.error('上传头像图片大小不能超过 2MB!');
-			// }
-			//       return isJPG && isLt2M;
-		},
+		beforeUpload: function beforeUpload(file) {},
 		handleSavePlate: function handleSavePlate(title) {
-			var _this = this;
+			var _this2 = this;
 
 			if (title === '编辑版块信息') {
 				__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* default */].addPlate(this.form).then(function (res) {
 					if (res.data.code === 200) {
-						_this.showPlateDialog = false;
-						_this.$message({
+						_this2.showPlateDialog = false;
+						_this2.$message({
 							message: '修改成功',
 							type: 'success'
 						});
+						_this2.getAllPlate();
 					}
 				}).catch(function (err) {
 					console.error(err);
@@ -60734,11 +60736,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			} else if (title === '添加版块') {
 				__WEBPACK_IMPORTED_MODULE_0__api_api__["a" /* default */].addPlate(this.form).then(function (res) {
 					if (res.data.code === 200) {
-						_this.showPlateDialog = false;
-						_this.$message({
+						_this2.showPlateDialog = false;
+						_this2.$message({
 							message: '添加成功',
 							type: 'success'
 						});
+						_this2.getAllPlate();
 					}
 				}).catch(function (err) {
 					console.error(err);
@@ -60750,6 +60753,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 199 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js__ = __webpack_require__(76);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bootstrap_js__);
+
+
+
+
+axios.defaults.baseURL = 'http://localhost:8000/api/';
+
+var api = {
+	// 获取所有版块
+	getAllPlate: function getAllPlate() {
+		return axios({
+			url: 'category/all',
+			method: 'get'
+		});
+	},
+
+	// 添加版块
+	addPlate: function addPlate(data) {
+		return axios({
+			url: 'category/add',
+			method: 'post',
+			params: data
+		});
+	}
+
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (api);
+
+/***/ }),
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60940,19 +60978,35 @@ var render = function() {
                         action: "/api/file/upload",
                         name: "plate-cover",
                         "show-file-list": false,
-                        "on-success": _vm.handleAvatarSuccess,
-                        "before-upload": _vm.beforeAvatarUpload
+                        "on-success": _vm.handleUploadSuccess,
+                        "before-upload": _vm.beforeUpload
                       }
                     },
                     [
-                      _vm.form.cover
-                        ? _c("img", {
-                            staticClass: "avatar",
-                            attrs: { src: _vm.form.cover }
-                          })
-                        : _c("i", {
-                            staticClass: "el-icon-plus avatar-uploader-icon"
-                          })
+                      _c("img", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.form.cover,
+                            expression: "form.cover"
+                          }
+                        ],
+                        staticClass: "avatar",
+                        attrs: { src: _vm.form.cover }
+                      }),
+                      _vm._v(" "),
+                      _c("i", {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: !_vm.form.cover,
+                            expression: "!form.cover"
+                          }
+                        ],
+                        staticClass: "el-icon-plus avatar-uploader-icon"
+                      })
                     ]
                   )
                 ],
@@ -61072,7 +61126,7 @@ if (false) {
 }
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -61080,7 +61134,7 @@ var normalizeComponent = __webpack_require__(14)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(201)
+var __vue_template__ = __webpack_require__(202)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61120,7 +61174,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61140,15 +61194,15 @@ if (false) {
 }
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(14)
 /* script */
-var __vue_script__ = __webpack_require__(203)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(204)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61188,7 +61242,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61207,7 +61261,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61249,7 +61303,7 @@ if (false) {
 }
 
 /***/ }),
-/* 205 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -61257,7 +61311,7 @@ var normalizeComponent = __webpack_require__(14)
 /* script */
 var __vue_script__ = null
 /* template */
-var __vue_template__ = __webpack_require__(206)
+var __vue_template__ = __webpack_require__(207)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -61297,7 +61351,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 206 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -61314,7 +61368,7 @@ var staticRenderFns = [
     return _c("div", [
       _c("img", {
         attrs: {
-          src: __webpack_require__(207),
+          src: __webpack_require__(208),
           height: "571",
           width: "1024"
         }
@@ -61332,16 +61386,10 @@ if (false) {
 }
 
 /***/ }),
-/* 207 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/404.jpg?8d1aceead4ad35286375ddeb2fb2aa01";
-
-/***/ }),
 /* 208 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = "/images/404.jpg?8d1aceead4ad35286375ddeb2fb2aa01";
 
 /***/ }),
 /* 209 */
@@ -61350,46 +61398,10 @@ module.exports = "/images/404.jpg?8d1aceead4ad35286375ddeb2fb2aa01";
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */,
-/* 222 */,
-/* 223 */,
-/* 224 */,
-/* 225 */,
-/* 226 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 210 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js__ = __webpack_require__(76);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__bootstrap_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__bootstrap_js__);
-
-
-
-
-axios.baseURL = 'http://localhost:8000/api/category/add';
-
-var api = {
-    addPlate: function addPlate(data) {
-        return axios({
-            url: 'http://localhost:8000/api/category/add',
-            method: 'post',
-            params: data
-        });
-    }
-
-};
-
-/* harmony default export */ __webpack_exports__["a"] = (api);
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

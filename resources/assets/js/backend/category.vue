@@ -51,10 +51,10 @@
 						action="/api/file/upload"
 						name="plate-cover"
 						:show-file-list="false"
-						:on-success="handleAvatarSuccess"
-						:before-upload="beforeAvatarUpload">
-					  	<img v-if="form.cover" :src="form.cover" class="avatar">
-						<i v-else class="el-icon-plus avatar-uploader-icon"></i>
+						:on-success="handleUploadSuccess"
+						:before-upload="beforeUpload">
+					  	<img v-show="form.cover" :src="form.cover" class="avatar">
+						<i v-show="!form.cover" class="el-icon-plus avatar-uploader-icon"></i>
 					</el-upload>
 				</el-form-item>
 				<el-form-item label="版块描述" label-width="80px">
@@ -79,17 +79,7 @@
 	export default {
 		data() {
 			return {
-				tableData: [
-					{
-						id: 1,
-						name: 'HTML5',
-						cover: '/upload/Jcu02kqSXyjFTRrKMGoww70qxAljizx1jzdCYbxz.png',
-						describe: '下一代html',
-						weight: 0,
-						is_active: 1,
-						updated_at: '2017-11-11 11:11:11',
-					}
-				],
+				tableData: [],
 				showPlateDialog : false,
 				form: {
 					name: '',
@@ -103,16 +93,28 @@
 		},
 
 		created(){
-			
+			this.getAllPlate();
 		},
 
 		methods: {
+			// 获取所有版块
+			getAllPlate() {
+				api.getAllPlate().then(res => {
+					if(res.data.code === 200) {
+						this.tableData = res.data.data;
+					}
+				}).catch(err => {
+					console.error(err);
+				})
+			},
+
 			// 添加版块
 			handleAdd() {
 				this.showPlateDialog = true;
 				this.form = {
 					weight: 0,
 					is_active: 1,
+					cover: ''
 				};
 				this.form.title = '添加版块';
 			},
@@ -129,35 +131,28 @@
 				console.log(index, row);
 			},
 
-			handleAvatarSuccess(res, file) {
-				this.form.cover = URL.createObjectURL(file.raw);
+			handleUploadSuccess(res, file) {
+				if(res.code === 200) {
+					this.form.cover = res.data.url;
+				}
+				// this.form.cover = URL.createObjectURL(file.raw);
 			},
-			beforeAvatarUpload(file) {
-				// const isJPG = file.type === 'image/jpeg';
-				// const isLt2M = file.size / 1024 / 1024 < 2;
-
-				// if (!isJPG) {
-				//   this.$message.error('上传头像图片只能是 JPG 格式!');
-				// }
-				// if (!isLt2M) {
-				//   this.$message.error('上传头像图片大小不能超过 2MB!');
-				// }
-		  //       return isJPG && isLt2M;
-	      	},
+			beforeUpload(file) {},
 
 	      	handleSavePlate(title) {
 	      		if(title === '编辑版块信息') {
-	      			api.addPlate(this.form).then(res => {
-	      				if(res.data.code === 200) {
-	      					this.showPlateDialog = false;
-	      					this.$message({
-	      						message: '修改成功',
-	      						type: 'success'
-	      					});
-	      				}
-	      			}).catch(err => {
-	      				console.error(err);
-	      			})
+					api.addPlate(this.form).then(res => {
+						if(res.data.code === 200) {
+							this.showPlateDialog = false;
+							this.$message({
+								message: '修改成功',
+								type: 'success'
+							});
+							this.getAllPlate();
+						}
+					}).catch(err => {
+						console.error(err);
+					})
 	      		} else if (title === '添加版块') {
 					api.addPlate(this.form).then(res => {
 						if(res.data.code === 200) {
@@ -166,6 +161,7 @@
 								message: '添加成功',
 								type: 'success'
 							});
+							this.getAllPlate();
 						}
 					}).catch(err => {
 						console.error(err);

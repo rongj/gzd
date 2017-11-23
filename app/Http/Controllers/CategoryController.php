@@ -16,7 +16,6 @@ class CategoryController extends Controller
 		];
 	}
 
-
     public function add()
     {
 		// $category->name = request('name');
@@ -39,24 +38,23 @@ class CategoryController extends Controller
 		];
     }
 
+    public function update()
+    {
+
+    }
+
+    public function delete()
+    {
+    	return 'aaa';
+    }
+
     public function upload(Request $request) {
     	$file = $request->file('plate-cover')->store('upload');
-    	$realPath = $file -> getRealPath();
-    	return $realPath;
-
-		// $strategy = $request->get('strategy', 'images');
-		// if (!$request->hasFile('image')) {
-			// return 'no file found';
-		    // return $this->respondWithArray([
-		    //     'success' => false,
-		    //     'error' => 'no file found.',
-		    // ]);
-		// }
-
-		// $path = $strategy . '/' . date('Y') . '/' . date('m') . '/' . date('d');
-
-		// $result = $this->manager->store($request->file('image'), $path);
-		dd($result);
-		// return $this->respondWithArray($result);
+    	return [
+    		'code' => 200,
+    		'data' => [
+    			'url' => '/'.$file
+    		],
+    	];
     }
 }
