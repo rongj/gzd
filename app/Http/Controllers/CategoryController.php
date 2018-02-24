@@ -25,7 +25,7 @@ class CategoryController extends Controller
     	// $category->save();
 		$category = [
 			'name' => request('name'),
-			'cover' => request('cover') ? request('cover') : 'aaaaaaaaa',
+			'cover' => request('cover'),
 			'describe' => request('describe'),
 			'weight' => request('weight'),
 		];
@@ -40,12 +40,22 @@ class CategoryController extends Controller
 
     public function update()
     {
-
+    	$category = [
+    		'name' => request('name'),
+    		'cover' => request('cover'),
+    		'describe' => request('describe'),
+    		'weight' => request('weight'),
+    	];
+    	Category::where('id', request('id'))->update($category);
+    	return [
+    		'code' => 200,
+    		'msg' => '更新成功',
+    	];
     }
 
     public function delete()
     {
-    	return 'aaa';
+
     }
 
     public function upload(Request $request) {

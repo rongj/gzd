@@ -118,7 +118,7 @@
 			font-size: 28px;
 			font-weight: 400;
 			font-family: Raleway;
-			padding-top: 8px;
+			padding-top: 4px;
 		}
 		p {
 			font-size: 12px;

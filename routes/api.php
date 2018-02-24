@@ -34,6 +34,8 @@ Route::name('admin.')->group(function() {
         function($router) {
             $router->get('/all', 'CategoryController@index')->name('category.index');
             $router->any('/add', 'CategoryController@add')->name('category.add');
+            $router->any('/update', 'CategoryController@update')->name('category.update');
+            $router->post('/delete/{id}', 'CategoryController@add')->name('category.add');
         }
     );
    	Route::any('/file/upload', 'CategoryController@upload')->name('file.upload');

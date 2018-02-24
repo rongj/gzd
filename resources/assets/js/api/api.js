@@ -20,6 +20,15 @@ const api = {
             method: 'post',
             params: data
         })
+    },
+
+    // 修改版块
+    updatePlate: data => {
+        return axios({
+            url: 'category/update',
+            method: 'post',
+            params: data
+        })
     }
 
 }

@@ -69,7 +69,7 @@
 			</el-form>
 			<div slot="footer" class="dialog-footer">
 				<el-button @click="showPlateDialog=false">取 消</el-button>
-				<el-button type="primary" @click="handleSavePlate(form.title)">确 定</el-button>
+				<el-button type="primary" @click="handleSavePlate">确 定</el-button>
 			</div>
 		</el-dialog>
 	</div>
@@ -81,13 +81,13 @@
 			return {
 				tableData: [],
 				showPlateDialog : false,
+				editType: 1,
 				form: {
 					name: '',
 					cover: '',
 					describe: '',
 					weight: '',
 					is_active: 1,
-					title: '',
 				},
 			}
 		},
@@ -116,14 +116,15 @@
 					is_active: 1,
 					cover: ''
 				};
-				this.form.title = '添加版块';
+				this.editType = 1;
 			},
 
 			// 编辑版块
 			handleEdit(index, row) {
 				this.showPlateDialog = true;
+				console.log(row);
 				this.form = row;
-				this.form.title = '编辑版块信息';
+				this.editType = 2;
 			},
 
 			// 删除版块
@@ -139,9 +140,9 @@
 			},
 			beforeUpload(file) {},
 
-	      	handleSavePlate(title) {
-	      		if(title === '编辑版块信息') {
-					api.addPlate(this.form).then(res => {
+	      	handleSavePlate() {
+	      		if(this.editType === 2) {
+					api.updatePlate(this.form).then(res => {
 						if(res.data.code === 200) {
 							this.showPlateDialog = false;
 							this.$message({
@@ -153,7 +154,7 @@
 					}).catch(err => {
 						console.error(err);
 					})
-	      		} else if (title === '添加版块') {
+	      		} else if (this.editType === 1) {
 					api.addPlate(this.form).then(res => {
 						if(res.data.code === 200) {
 							this.showPlateDialog = false;
