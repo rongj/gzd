@@ -2,16 +2,42 @@
 
 import '../bootstrap.js'
 
-axios.defaults.baseURL = 'http://localhost:8000/api/'
+axios.defaults.baseURL = 'http://localhost:8088/api/'
 
 const api = {
-	// 获取所有版块
-	getAllPlate: () => {
+	// 登录
+	login: data => {
 		return axios({
-		    url: 'category/all',
-		    method: 'get',
+		    url: 'login',
+		    method: 'post',
+            params: data
 		})
 	},
+
+    // 登出
+    logout: () => {
+        return axios({
+            url: 'logout',
+            method: 'get'
+        })
+    },
+
+    // 注册
+    register: data => {
+        return axios({
+            url: 'register',
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 获取所有版块
+    getAllPlate: () => {
+        return axios({
+            url: 'category/all',
+            method: 'get',
+        })
+    },
 
 	// 添加版块
     addPlate: data => {
@@ -29,7 +55,16 @@ const api = {
             method: 'post',
             params: data
         })
-    }
+    },
+
+    // 获取文章列表
+    getPostsList: data => {
+        return axios({
+            url: 'post/list',
+            method: 'get',
+            params: data
+        })
+    },
 
 }
 

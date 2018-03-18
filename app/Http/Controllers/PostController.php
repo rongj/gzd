@@ -12,9 +12,14 @@ class PostController extends Controller
     {
 		// $app = app();
 		// $log = $app->make('log');
-		\Log::info("post_index", ['data', 'this is post index3']);
-    	$posts = Post::orderBy('created_at', 'desc')->paginate(10);
-    	return view('post/index', compact('posts'));
+		// \Log::info("post_index", ['data', 'this is post index3']);
+        $page = request()->get('page');
+        $pageSize = request()->get('pageSize');
+    	$posts = Post::orderBy('created_at', 'desc')->paginate($pageSize);
+        return [
+            'code' => 200,
+            'data' => $posts,
+        ];
     }
 
     // 文章详情

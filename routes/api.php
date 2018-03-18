@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 
@@ -31,16 +31,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::name('admin.')->group(function() {
 	Route::prefix('category')->group(
-        function($router) {
-            $router->get('/all', 'CategoryController@index')->name('category.index');
-            $router->any('/add', 'CategoryController@add')->name('category.add');
-            $router->any('/update', 'CategoryController@update')->name('category.update');
-            $router->post('/delete/{id}', 'CategoryController@add')->name('category.add');
-        }
-    );
-   	Route::any('/file/upload', 'CategoryController@upload')->name('file.upload');
+		function($router) {
+			$router->get('/all', 'CategoryController@index')->name('category.index');
+			$router->any('/add', 'CategoryController@add')->name('category.add');
+			$router->any('/update', 'CategoryController@update')->name('category.update');
+			$router->post('/delete/{id}', 'CategoryController@add')->name('category.add');
+		}
+	);
+
+	Route::prefix('post')->group(
+		function($router) {
+			Route::get('/list', 'PostController@index');
+			Route::get('/create', 'PostController@create');
+			Route::post('/create', 'PostController@store');
+			Route::get('/{post}', 'PostController@detail');
+			Route::get('/create', 'PostController@create');
+			Route::get('/{post}/edit', 'PostController@edit');
+			Route::put('/{post}', 'PostController@update');
+			Route::get('/{post}/delete', 'PostController@delete');
+		}
+	);
+
+
+	Route::post('/register', 'RegisterController@register');
+	Route::post('/login', 'LoginController@login');
+	Route::get('/logout', 'LoginController@logout');
+
+
+	Route::any('/file/upload', 'CategoryController@upload')->name('file.upload');
 });
-
-
-
-// Route::post('/add', 'PostController@add');

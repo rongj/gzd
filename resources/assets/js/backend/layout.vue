@@ -20,35 +20,27 @@
 			<el-col :xs="6" :sm="4" class="layout-left">
 				<el-menu :default-active="defaultActive" class="el-menu-vertical-demo" router>
 					<el-submenu index="1">
-						<template slot="title"><i class="el-icon-menu"></i>文章内容管理</template>
-						<el-menu-item index="category">所有分类</el-menu-item>
-						<el-menu-item index="subplate">二级板块</el-menu-item>
-						<el-menu-item index="article">文章管理</el-menu-item>
+						<template slot="title"><i class="el-icon-menu"></i>用户管理</template>
+						<el-menu-item index="users">所有用户</el-menu-item>
+						<el-menu-item index="adduser">添加用户</el-menu-item>
+						<el-menu-item index="userinfo">个人信息</el-menu-item>
 					</el-submenu>
-<!-- 					<el-submenu index="2">
-						<template slot="title"><i class="el-icon-menu"></i>猫扑视频</template>
-						<el-menu-item index="2-1">意见反馈</el-menu-item>
+					<el-submenu index="2">
+						<template slot="title"><i class="el-icon-menu"></i>分类管理</template>
+						<el-menu-item index="category">所有分类</el-menu-item>
+						<el-menu-item index="addcategory">添加分类</el-menu-item>
+						<el-menu-item index="subplate">所有板块</el-menu-item>
+						<el-menu-item index="addsubplate">添加板块</el-menu-item>
 					</el-submenu>
 					<el-submenu index="3">
-						<template slot="title"><i class="el-icon-menu"></i>猫仔队</template>
-						<el-menu-item index="3-1">轮播图</el-menu-item>
-						<el-menu-item index="3-2">友情链接</el-menu-item>
+						<template slot="title"><i class="el-icon-menu"></i>文章管理</template>
+						<el-menu-item index="article">文章列表</el-menu-item>
+						<el-menu-item index="addarticle">添加文章</el-menu-item>
 					</el-submenu>
 					<el-submenu index="4">
-						<template slot="title"><i class="el-icon-menu"></i>猫扑Web</template>
-						<el-menu-item index="4-1">大杂烩双栏页</el-menu-item>
-						<el-menu-item index="4-2">友情链接</el-menu-item>
-						<el-menu-item index="4-3">大杂烩置顶配置</el-menu-item>
+						<template slot="title"><i class="el-icon-menu"></i>日志管理</template>
+						<el-menu-item index="log">所有日志</el-menu-item>
 					</el-submenu>
-					<el-submenu index="5">
-						<template slot="title"><i class="el-icon-menu"></i>视频管理后台</template>
-						<el-menu-item index="5-1">视频初审</el-menu-item>
-						<el-menu-item index="5-2">视频二审</el-menu-item>
-						<el-menu-item index="5-3">视频帖管理</el-menu-item>
-						<el-menu-item index="5-4">视频管理</el-menu-item>
-						<el-menu-item index="5-5">弹幕</el-menu-item>
-						<el-menu-item index="5-6">评论</el-menu-item>
-					</el-submenu> -->
 				</el-menu>
 			</el-col>
 			<el-col :xs="18" :sm="20" class="layout-right">
