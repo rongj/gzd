@@ -49,10 +49,9 @@
 				}).then(res => {
 					console.log(res)
 					if(res.data.code === 200) {
-						
-						console.log(res.data);
+						this.$message.success('添加用户成功')
 					} else {
-						 this.$message.error(res.data.msg)
+						this.$message.error(res.data.msg)
 					}
 				}).catch(e => {})
 			}

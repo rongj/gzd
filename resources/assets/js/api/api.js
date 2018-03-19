@@ -31,6 +31,15 @@ const api = {
         })
     },
 
+    // 检查用户是否登录
+    checkLogined: () => {
+        return axios({
+            url: 'checkLogined',
+            method: 'get',
+            withCredentials: true
+        })
+    },
+
     // 获取所有版块
     getAllPlate: () => {
         return axios({

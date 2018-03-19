@@ -20,6 +20,8 @@
 </template>
 
 <script>
+	import api from '../api/api'
+
 	export default {
 		data() {
 			return {
@@ -29,14 +31,29 @@
 			}
 		},
 
+		created() {
+			console.log(this.$route);
+		},
+
 		methods: {
 			handleLogin() {
-				console.log(this.username, this.password, this.remember);
+				api.login({
+					username: this.username,
+					password: this.password,
+					is_remember: this.remember
+				}).then(res => {
+					if(res.data.code === 200) {
+						let url = this.$route.query.redictUrl;
+						url ? location.replace(url) : this.$router.replace('/')
+					} else {
+						this.$message.error(res.data.msg)
+					}
+				}).catch(e => {})
 			}
 		}
 	}
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 	.login-form {
 		width: 400px;
 		position: absolute;

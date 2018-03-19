@@ -55,6 +55,7 @@ Route::name('admin.')->group(function() {
 
 	Route::post('/register', 'RegisterController@register');
 	Route::post('/login', 'LoginController@login');
+	Route::get('/checkLogined', 'LoginController@checkLogined');
 	Route::get('/logout', 'LoginController@logout');
 
 

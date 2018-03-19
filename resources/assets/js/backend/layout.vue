@@ -10,7 +10,7 @@
 						<template slot="title">管理员</template>
 						<el-menu-item index="1-1">修改密码</el-menu-item>
 						<el-menu-item index="1-2">个人信息</el-menu-item>
-						<el-menu-item index="1-3">退出</el-menu-item>
+						<el-menu-item index="logout" @click="logout">退出</el-menu-item>
 					</el-submenu>
 					<el-menu-item index="2"><a href="/">网站前台</a></el-menu-item>
 				</el-menu>
@@ -53,12 +53,33 @@
 </template>
 
 <script>
+	import api from '../api/api'
+
 	export default {
 		computed: {
 			defaultActive: function(){
 				return this.$route.path.replace('/', '');
 			}
 		},
+
+		created(){
+			api.checkLogined().then(res => {
+				console.log(res.data);
+				// if(res.data.code === 200) {
+				// 	this.$router.push('login')
+				// }
+			})
+		},
+
+		methods: {	
+			logout() {
+				api.logout().then(res => {
+					if(res.data.code === 200) {
+						this.$router.push('login')
+					}
+				})
+			}
+		}
 	}
 </script>
 
