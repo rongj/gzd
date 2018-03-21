@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Validator;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -12,9 +11,9 @@ class LoginController extends Controller
 	public function login()
 	{
 		$validator = Validator::make(request()->all(), [
-			'username' => 'required',
+			'email' => 'required|email',
 			'password' => 'required|min:5|max:10',
-			'is_remember' => '',
+			'remember' => '',
 		]);
 
 		if($validator->fails()) {
@@ -24,15 +23,17 @@ class LoginController extends Controller
 			];
 		}
 
-		$user = request(['username', 'password']);
-		$is_remember = boolval(request('is_remember'));
+		$user = request(['email', 'password']);
+		$remember = boolval(request('remember'));
 
-		if(\Auth::attempt($user, $is_remember)) {
+		if(\Auth::attempt($user, $remember)) {
+			$accessToken = \Auth::user()->createToken('user_token')->accessToken;
 			return [
 				'code' => 200,
 				'msg' => '登录成功',
 				'data' => [
-					'username' => request('username'),
+					'token' => $accessToken,
+					'name' => \Auth::user()->name,
 					'userid' => \Auth::id()
 				] 
 			];
@@ -55,9 +56,20 @@ class LoginController extends Controller
 	}
 
 	// 检测用户是否已登录
-	public function checkLogined()
+	public function checkLogined(Request $request)
 	{
-		dd(\Auth::check());
-		dd(\Auth::id());
+		if(\Auth::check()){
+			return [
+				'code' => 200,
+				'data' => [
+					'name' => \Auth::user()->name,
+					'userid' => \Auth::id()
+				] 
+			];
+		}
+		return [
+			'code' => 201,
+			'msg' => '请重新登录'
+		]; 
 	}
 }

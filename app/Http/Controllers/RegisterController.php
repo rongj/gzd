@@ -12,7 +12,7 @@ class RegisterController extends Controller
 	public function register()
 	{
 		$validator = Validator::make(request()->all(), [
-			'username' => 'required|min:3|unique:users,username',
+			'name' => 'required|min:3|unique:users,name',
 			'email' => 'required|unique:users,email|email',
 			'role' => 'required',
 			'password' => 'required|min:5|max:10|confirmed',
@@ -25,20 +25,27 @@ class RegisterController extends Controller
 			];
 		}
 
-		$username = request('username');
+		$name = request('name');
 		$email = request('email');
 		$role_id = request('role');
 		$role_name = request('role') === '1' ? '管理员' : '普通用户';
 		$password = bcrypt(request('password'));
 
-		$user = compact('username', 'email', 'password', 'role_id', 'role_name');
 
-		User::create($user);
+		$input = compact('name', 'email', 'password', 'role_id', 'role_name');
 
-		return [
-			'code' => 200,
-			'msg' => '添加成功',
-			'data' => compact('username', 'email', 'role_name')
-		];
+		$user = User::create($input);
+
+		// $accessToken = $user->createToken('user_token')->accessToken;
+
+		if($user) {
+			return [
+				'code' => 200,
+				'msg' => '添加成功',
+				'data' => compact('name', 'email', 'role_name', 'accessToken')
+			];
+		}
+		
+
 	}
 }

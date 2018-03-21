@@ -41,7 +41,7 @@
 		methods: {
 			handleAdduser() {
 				api.register({
-					username: this.username,
+					name: this.username,
 					password: this.password,
 					password_confirmation: this.passowrd2,
 					email: this.email,

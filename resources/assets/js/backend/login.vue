@@ -38,9 +38,9 @@
 		methods: {
 			handleLogin() {
 				api.login({
-					username: this.username,
+					email: this.username,
 					password: this.password,
-					is_remember: this.remember
+					remember: this.remember
 				}).then(res => {
 					if(res.data.code === 200) {
 						let url = this.$route.query.redictUrl;
