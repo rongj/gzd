@@ -40,16 +40,16 @@ const api = {
         })
     },
 
-    // 获取所有版块
-    getAllPlate: () => {
+    // 获取所有类别
+    getAllCategory: () => {
         return axios({
             url: 'category/all',
             method: 'get',
         })
     },
 
-	// 添加版块
-    addPlate: data => {
+	// 添加类别
+    addCategory: data => {
         return axios({
             url: 'category/add',
             method: 'post',
@@ -57,12 +57,54 @@ const api = {
         })
     },
 
-    // 修改版块
-    updatePlate: data => {
+    // 修改类别
+    updateCategory: data => {
         return axios({
             url: 'category/update',
             method: 'post',
             params: data
+        })
+    },
+
+    // 删除板块
+    deleteCategory: data => {
+        return axios({
+            url: `category/delete/${data.id}`,
+            method: 'post',
+        })
+    },
+
+    // 获取所有板块
+    getAllPlate: () => {
+        return axios({
+            url: 'plate/all',
+            method: 'get',
+        })
+    },
+
+    // 添加板块
+    addPlate: data => {
+        return axios({
+            url: 'plate/add',
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 修改板块
+    updatePlate: data => {
+        return axios({
+            url: 'plate/update',
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 删除板块
+    deletePlate: data => {
+        return axios({
+            url: `plate/delete/${data.id}`,
+            method: 'post',
         })
     },
 

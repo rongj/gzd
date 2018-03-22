@@ -27,12 +27,12 @@ class LoginController extends Controller
 		$remember = boolval(request('remember'));
 
 		if(\Auth::attempt($user, $remember)) {
-			$accessToken = \Auth::user()->createToken('user_token')->accessToken;
+			// $accessToken = \Auth::user()->createToken('user_token')->accessToken;
 			return [
 				'code' => 200,
 				'msg' => '登录成功',
 				'data' => [
-					'token' => $accessToken,
+					// 'token' => $accessToken,
 					'name' => \Auth::user()->name,
 					'userid' => \Auth::id()
 				] 

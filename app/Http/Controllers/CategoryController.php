@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Plate;
 
 class CategoryController extends Controller
 {
 	public function index()
 	{
-		$categories = Category::orderBy('weight', 'desc')->get();
+		$categories = Category::orderBy('weight', 'desc')->orderBy('id')->get();
 		return [
 			'code' => 200,
 			'data' => $categories,
@@ -18,11 +19,6 @@ class CategoryController extends Controller
 
     public function add()
     {
-		// $category->name = request('name');
-		// $category->cover = request('cover');
-		// $category->describe = request('describe');
-		// $category->weight = request('weight');
-    	// $category->save();
 		$category = [
 			'name' => request('name'),
 			'cover' => request('cover'),
@@ -30,7 +26,6 @@ class CategoryController extends Controller
 			'weight' => request('weight'),
 		];
 
-    	// $category = array_merge(request()->all());
 		Category::create($category);
 		return [
 			'code' => 200,
@@ -53,9 +48,22 @@ class CategoryController extends Controller
     	];
     }
 
-    public function delete()
+    public function delete($id)
     {
-
+        if (empty($id)) {
+            return [
+                'code' => 201,
+                'msg' => 'id不能为空',
+            ];
+        }
+        $result = Category::where('id', $id)->delete();
+        $result2 = Plate::where('category_id', $id)->delete();
+        if($result && $result2) {
+            return [
+                'code' => 200,
+                'msg' => '删除成功',
+            ];
+        }
     }
 
     public function upload(Request $request) {

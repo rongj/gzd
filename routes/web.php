@@ -13,7 +13,7 @@
 
 Route::get('/{path?}', function () {
     return view('index');
-})->where('path', '[^\/admin].*');
+})->where('path', '[^\/admin|^\/api].*');
 
 
 Route::get('/admin/{path?}', function (){
@@ -21,35 +21,44 @@ Route::get('/admin/{path?}', function (){
 })->where('path', '[\/\w\.-]*');
 
 /* api */
-// Route::group(['prefix' => 'api', 'name' => 'admin.'], function() {
-// 	Route::post('/register', 'RegisterController@register');
-// 	Route::post('/login', 'LoginController@login');
-// 	Route::get('/checkLogined', 'LoginController@checkLogined');
-// 	Route::get('/logout', 'LoginController@logout');
+Route::group(['prefix' => 'api'], function() {
+	Route::post('/register', 'RegisterController@register');
+	Route::post('/login', 'LoginController@login');
+	Route::get('/checkLogined', 'LoginController@checkLogined');
+	Route::get('/logout', 'LoginController@logout');
 		
-// 	Route::any('/file/upload', 'CategoryController@upload')->name('file.upload');
+	// Route::post('/file/upload', 'CategoryController@upload')->name('file.upload');
 
-// 	// Route::group(['middleware' => 'auth:admin'], function(){
-// 		Route::prefix('category')->group(
-// 			function($router) {
-// 				$router->get('/all', 'CategoryController@index')->name('category.index');
-// 				$router->any('/add', 'CategoryController@add')->name('category.add');
-// 				$router->any('/update', 'CategoryController@update')->name('category.update');
-// 				$router->post('/delete/{id}', 'CategoryController@add')->name('category.add');
-// 			}
-// 		);
+	// Route::group(['middleware' => 'auth:admin'], function(){
+		Route::prefix('category')->group(
+			function($router) {
+				$router->get('/all', 'CategoryController@index')->name('category.index');
+				$router->any('/add', 'CategoryController@add')->name('category.add');
+				$router->any('/update', 'CategoryController@update')->name('category.update');
+				$router->post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
+			}
+		);
 
-// 		Route::prefix('post')->group(
-// 			function($router) {
-// 				Route::get('/list', 'PostController@index');
-// 				Route::get('/create', 'PostController@create');
-// 				Route::post('/create', 'PostController@store');
-// 				Route::get('/{post}', 'PostController@detail');
-// 				Route::get('/create', 'PostController@create');
-// 				Route::get('/{post}/edit', 'PostController@edit');
-// 				Route::put('/{post}', 'PostController@update');
-// 				Route::get('/{post}/delete', 'PostController@delete');
-// 			}
-// 		);
-// 	// });
-// });
+		Route::prefix('plate')->group(
+			function($router) {
+				$router->get('/all', 'PlateController@index')->name('plate.index');
+				$router->any('/add', 'PlateController@add')->name('plate.add');
+				$router->any('/update', 'PlateController@update')->name('plate.update');
+				$router->post('/delete/{id}', 'PlateController@delete')->name('plate.delete');
+			}
+		);
+
+		Route::prefix('post')->group(
+			function($router) {
+				Route::get('/list', 'PostController@index');
+				Route::get('/create', 'PostController@create');
+				Route::post('/create', 'PostController@store');
+				Route::get('/{post}', 'PostController@detail');
+				Route::get('/create', 'PostController@create');
+				Route::get('/{post}/edit', 'PostController@edit');
+				Route::put('/{post}', 'PostController@update');
+				Route::get('/{post}/delete', 'PostController@delete');
+			}
+		);
+	// });
+});
