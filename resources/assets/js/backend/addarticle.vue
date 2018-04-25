@@ -22,34 +22,30 @@
                 </el-upload>
             </el-form-item>
             <el-form-item label="内容" prop="markdown">
-                <el-input type="textarea" ref="myMarkdown" :autosize="{ minRows: 12}"></el-input>
+                 <mavon-editor v-model="content"/>
             </el-form-item>
             <el-form-item>
                 <el-button>取 消</el-button>
                 <el-button type="primary">确 定</el-button>
             </el-form-item>
         </el-form>
-<!--         <div class="pit-previews pit-common">
-            <article class="markdown-previews markdown-body" v-html="markdownPreviews"></article>
-        </div>
-        <el-dialog title="图片预览" v-model="previewVisible" size="large">
-            <div class="showPreview">
-                <div v-html="showPreview"></div>
-            </div>
-            <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="previewVisible = false">关 闭</el-button>
-        </span> -->
-        </el-dialog>
     </div>
 </template>
 
 <script>
+    import { mavonEditor } from 'mavon-editor'
+    import 'mavon-editor/dist/css/index.css'
+
     export default {
+        components: {
+            mavonEditor
+        },
         data() {
             return {
                 article: {
-
-                }
+                    category_id: ''
+                },
+                content: ''
             }
         }
     }
@@ -58,7 +54,6 @@
 <style lang="scss">
     .pit-common {
         margin: 20px;
-        width: 80%;
         min-width: 800px;
     }
 
