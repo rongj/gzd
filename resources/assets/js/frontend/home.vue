@@ -1,21 +1,22 @@
 <template>
 	<div class="main-wrap">
-		<div class="main-header clearfix">
-			<div class="header-logo fl">
-				<img src="../assets/haski.png" alt="">
-				<h2></h2>
+		<div class="header-wrap">
+			<div class="main-header clearfix">
+				<div class="header-logo fl">
+					<h2>我的个人网站</h2>
+				</div>
+				<div class="header-nav fl">
+					<a href="">文章</a>
+					<a href="">归档</a>
+					<a href="">demo</a>
+				</div>
+				<div class="header-search fr">
+					<form class="search-form">
+						<input type="search" placeholder="输入关键字搜索">
+					</form>
+				</div>
 			</div>
-<!-- 			<div class="header-nav">
-				<a href="">版块</a>
-				<a href="">文章</a>
-				<a href="">外链</a>
-			</div> -->
-			<div class="header-search fr">
-				<form class="search-form">
-					<input type="search" placeholder="输入关键字搜索">
-				</form>
-			</div>
-		</div>
+		</div>	
 		<div class="main-content">
 			<div class="panel-list clearfix">
 				<div class="panel-item" v-for="(item, i) in itemlist" :key="i">

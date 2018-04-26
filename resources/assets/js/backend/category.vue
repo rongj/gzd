@@ -2,7 +2,7 @@
 	<div class="main-panel">
 		<el-breadcrumb separator="/" class="breadcrumb mb25">
 			<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-			<el-breadcrumb-item :to="{ path: '/category' }">文章管理</el-breadcrumb-item>
+			<el-breadcrumb-item :to="{ path: '/category' }">分类管理</el-breadcrumb-item>
 			<el-breadcrumb-item>所有类别</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="main-content">

@@ -66,7 +66,7 @@ const api = {
         })
     },
 
-    // 删除板块
+    // 删除类别
     deleteCategory: data => {
         return axios({
             url: `category/delete/${data.id}`,
@@ -104,6 +104,40 @@ const api = {
     deletePlate: data => {
         return axios({
             url: `plate/delete/${data.id}`,
+            method: 'post',
+        })
+    },
+
+    // 获取所有标签
+    getAllTag: () => {
+        return axios({
+            url: 'tag/all',
+            method: 'get',
+        })
+    },
+
+    // 添加标签
+    createTag: data => {
+        return axios({
+            url: 'tag/create',
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 修改标签
+    updateTag: data => {
+        return axios({
+            url: `tag/update/${data.id}`,
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 删除标签
+    destroyTag: data => {
+        return axios({
+            url: `tag/destroy/${data.id}`,
             method: 'post',
         })
     },

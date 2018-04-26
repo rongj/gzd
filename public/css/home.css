@@ -1,4 +1,6 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);body {
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+
+body {
   background: #f5f5f5;
 }
 
@@ -11,13 +13,17 @@
   margin: 0 auto;
 }
 
-.main-header {
-  padding: 0 10px;
+.header-wrap {
+  background: #ffffff;
+  -webkit-box-shadow: 0 0 43px #ddd;
+          box-shadow: 0 0 43px #ddd;
+  height: 70px;
   margin-bottom: 30px;
 }
 
 .header-logo {
   line-height: 70px;
+  font-size: 0;
 }
 
 .header-logo img {
@@ -25,9 +31,24 @@
 }
 
 .header-logo h2 {
-  font-size: 28px;
+  font-size: 24px;
   display: inline-block;
   vertical-align: middle;
+  font-weight: 600;
+  font-family: '\5FAE\8EDF\6B63\9ED1\9AD4';
+}
+
+.header-nav {
+  margin-top: 15px;
+  margin-left: 50px;
+}
+
+.header-nav a {
+  display: block;
+  float: left;
+  line-height: 40px;
+  margin-right: 30px;
+  font-size: 16px;
 }
 
 .search-form {
@@ -37,7 +58,6 @@
   height: 50px;
   line-height: 50px;
   margin-top: 10px;
-  border-bottom: 1px solid #dbdbdb;
 }
 
 .search-form input {

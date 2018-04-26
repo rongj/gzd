@@ -32,19 +32,28 @@ Route::group(['prefix' => 'api'], function() {
 	// Route::group(['middleware' => 'auth:admin'], function(){
 		Route::prefix('category')->group(
 			function($router) {
-				$router->get('/all', 'CategoryController@index')->name('category.index');
-				$router->any('/add', 'CategoryController@add')->name('category.add');
-				$router->any('/update', 'CategoryController@update')->name('category.update');
-				$router->post('/delete/{id}', 'CategoryController@delete')->name('category.delete');
+				$router->get('/all', 'CategoryController@index');
+				$router->any('/add', 'CategoryController@add');
+				$router->any('/update', 'CategoryController@update');
+				$router->post('/delete/{id}', 'CategoryController@delete');
 			}
 		);
 
 		Route::prefix('plate')->group(
 			function($router) {
-				$router->get('/all', 'PlateController@index')->name('plate.index');
-				$router->any('/add', 'PlateController@add')->name('plate.add');
-				$router->any('/update', 'PlateController@update')->name('plate.update');
-				$router->post('/delete/{id}', 'PlateController@delete')->name('plate.delete');
+				$router->get('/all', 'PlateController@index');
+				$router->any('/add', 'PlateController@add');
+				$router->any('/update', 'PlateController@update');
+				$router->post('/delete/{id}', 'PlateController@delete');
+			}
+		);
+
+		Route::prefix('tag')->group(
+			function($router) {
+				$router->get('/all', 'TagController@index');
+				$router->post('/create', 'TagController@create');
+				$router->post('/update/{id}', 'TagController@update');
+				$router->post('/destroy/{id}', 'TagController@destroy');
 			}
 		);
 

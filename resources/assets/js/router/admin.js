@@ -7,9 +7,8 @@ import users from '../backend/users.vue'
 import adduser from '../backend/adduser.vue'
 import userinfo from '../backend/userinfo.vue'
 import category from '../backend/category.vue'
-import addcategory from '../backend/addcategory.vue'
 import subplate from '../backend/subplate.vue'
-import addsubplate from '../backend/addsubplate.vue'
+import tag from '../backend/tag.vue'
 import article from '../backend/article.vue'
 import addarticle from '../backend/addarticle.vue'
 import editarticle from '../backend/editarticle.vue'
@@ -52,19 +51,14 @@ export default new Router({
 					name: 'category',
 				},
 				{
-					path: 'addcategory',
-					component: addcategory,
-					name: 'addcategory',
-				},
-				{
 					path: 'subplate',
 					component: subplate,
 					name: 'subplate',
 				},
 				{
-					path: 'addsubplate',
-					component: addsubplate,
-					name: 'addsubplate',
+					path: 'tag',
+					component: tag,
+					name: 'tag',
 				},
 				{
 					path: 'article',
