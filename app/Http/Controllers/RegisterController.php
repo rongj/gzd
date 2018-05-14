@@ -8,7 +8,7 @@ use App\User;
 
 class RegisterController extends Controller
 {
-	// 注册行为
+	// 注册
 	public function register()
 	{
 		$validator = Validator::make(request()->all(), [
@@ -36,7 +36,7 @@ class RegisterController extends Controller
 
 		$user = User::create($input);
 
-		// $accessToken = $user->createToken('user_token')->accessToken;
+		$accessToken = $user->createToken('user_token')->accessToken;
 
 		if($user) {
 			return [

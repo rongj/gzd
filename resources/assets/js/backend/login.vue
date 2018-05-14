@@ -2,7 +2,7 @@
 	<div class="login-panel">
 		<el-form label-width="100px" class="login-form">
 			<el-form-item label="用户名">
-				<el-input type="username" v-model="username"></el-input>
+				<el-input type="username" v-model="name"></el-input>
 			</el-form-item>
 			<el-form-item label="密码">
 				<el-input type="password" v-model="password"></el-input>
@@ -20,33 +20,29 @@
 </template>
 
 <script>
-	import api from '../api/api'
 
 	export default {
 		data() {
 			return {
-				username: '',
+				name: '',
 				password: '',
 				remember: true
 			}
 		},
 
-		created() {
-			console.log(this.$route);
-		},
-
 		methods: {
 			handleLogin() {
-				api.login({
-					email: this.username,
+				this.$store.dispatch('login', {
+					name: this.name,
 					password: this.password,
 					remember: this.remember
-				}).then(res => {
-					if(res.data.code === 200) {
+				})
+				.then(result => {
+					if(result.code === 200) {
 						let url = this.$route.query.redictUrl;
 						url ? location.replace(url) : this.$router.replace('/')
 					} else {
-						this.$message.error(res.data.msg)
+						this.$message.error(result.msg)
 					}
 				}).catch(e => {})
 			}

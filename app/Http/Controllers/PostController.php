@@ -8,96 +8,84 @@ use App\Post;
 class PostController extends Controller
 {
     // 文章列表
-    function index()
+    public function index()
     {
 		// $app = app();
 		// $log = $app->make('log');
 		// \Log::info("post_index", ['data', 'this is post index3']);
-        $page = request()->get('page');
+        $page = request()->get('pageNum');
         $pageSize = request()->get('pageSize');
-    	$posts = Post::orderBy('created_at', 'desc')->paginate($pageSize);
+    	$posts = Post::orderBy('id')
+			->offset($pageSize*($page-1))
+			->limit($pageSize)
+			->get();
+		$totalCount = Post::count();
         return [
             'code' => 200,
-            'data' => $posts,
+            'data' => [
+				'dataList' => $posts,
+				'pageInfo' => [
+					'totalCount' => $totalCount,
+					'totalPage' => $totalCount 
+				]
+			]
         ];
     }
 
     // 文章详情
-    function detail(Post $post)
+    public function show($id)
     {
-    	return view('post/detail', compact('post'));
+		$post = Post::where('id', $id)->get();
+		return [
+			'code' => 200,
+			'data' => $post[0]
+		];
     }
 
-    // 发布
-    function create()
+    // 修改
+    public function update(Request $request, $id)
     {
-    	return view('post/create');
+    	$post = [
+			'title' => request('title'),
+			'content' => request('content'),
+		];
+		Post::where('id', $id)->update($post);
+		return [
+			'code' => 200,
+			'msg' => '修改成功'
+		];
     }
 
-    // 发布
-    function store()
-    {
-    	// dd(\Request::all());
-    	// dd(request()->all());
-    	// dd(request()->get('title'));
+	// 新增
+	public function create()
+	{
+		$post = [
+			'title' => request('title'),
+			'content' => request('content'),
+			'user_id' => \Auth::id()
+		];
 
-    	// $post = new Post();
-		// $post->title = request('title');
-		// $post->content = request('content');
-		// $post->save();
+		Post::create($post);
+		return [
+			'code' => 200,
+			'msg' => '添加成功',
+		];
+	}
 
-		// $params = [
-		// 	'title' => request('title'),
-		// 	'content' => request('content')
-		// ];
-		// Post::create($params);
-
-		// 验证
-		$this->validate(request(), [
-			'title' => 'required|string|max:100|min:5',
-			'content' => 'required|string|min:10',
-		]);
-
-		$user_id = \Auth::id();
-		$params = array_merge(request(['title', 'content']), compact('user_id'));
-
-		Post::create($params);
-		return redirect('/posts');
-    }
-
-    // 编辑
-    function edit(Post $post)
-    {
-		return view('post/edit', compact('post'));
-    }
-
-    // 编辑
-    function update(Post $post)
-    {
-    	// 验证
-    	$this->validate(request(), [
-    		'title' => 'required|string|max:100|min:5',
-    		'content' => 'required|string|min:10',
-    	]);
-
-		// 权限验证
-		$this->authorize('update', $post);
-
-		$post->title = request('title');
-		$post->content = request('content');
-		// dd($post->id);
-		$post->save();
-
-    	return redirect("/post/{$post->id}");
-    }
-
-    // 编辑
-    function delete(Post $post)
-    {
-		// 权限验证
-		$this->authorize('delete', $post);
-
-    	$post->delete();
-		return redirect('/posts');
-    }
+	// 删除
+	public function destroy($id)
+	{
+		$post = Post::where('id', $id)->get();
+		if($post[0]->user_id === \Auth::id()) {
+			return [
+				'code' => 200,
+				'msg' => '删除成功',
+			];
+		} else {
+			return [
+				'code' => 201,
+				'msg' => '没有删除权限',
+			];
+		}
+	}
 }

@@ -15,3 +15,10 @@ mix.js('resources/assets/js/admin.js', 'public/js')
    .sass('resources/assets/sass/admin.scss', 'public/css')
    .js('resources/assets/js/home.js', 'public/js')
    .sass('resources/assets/sass/home.scss', 'public/css');
+
+mix.webpackConfig({
+    output: {
+        publicPath: "/",
+        chunkFilename: 'js/lazy/[name].js?[chunkhash]'
+    },
+})

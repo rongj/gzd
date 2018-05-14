@@ -22,20 +22,22 @@ Route::get('/admin/{path?}', function (){
 
 /* api */
 Route::group(['prefix' => 'api'], function() {
-	Route::post('/register', 'RegisterController@register');
-	Route::post('/login', 'LoginController@login');
-	Route::get('/checkLogined', 'LoginController@checkLogined');
-	Route::get('/logout', 'LoginController@logout');
-		
-	// Route::post('/file/upload', 'CategoryController@upload')->name('file.upload');
-
 	// Route::group(['middleware' => 'auth:admin'], function(){
+		Route::prefix('passport')->group(
+			function($router) {
+				$router->post('/register', 'RegisterController@register');
+				$router->post('/login', 'LoginController@login');
+				$router->get('/checkLogin', 'LoginController@checkLogin');
+				$router->get('/logout', 'LoginController@logout');
+			}
+		);
+		
 		Route::prefix('category')->group(
 			function($router) {
 				$router->get('/all', 'CategoryController@index');
-				$router->any('/add', 'CategoryController@add');
-				$router->any('/update', 'CategoryController@update');
-				$router->post('/delete/{id}', 'CategoryController@delete');
+				$router->post('/create', 'CategoryController@create');
+				$router->post('/update/{id}', 'CategoryController@update');
+				$router->post('/destroy/{id}', 'CategoryController@destroy');
 			}
 		);
 
@@ -52,22 +54,35 @@ Route::group(['prefix' => 'api'], function() {
 			function($router) {
 				$router->get('/all', 'TagController@index');
 				$router->post('/create', 'TagController@create');
-				$router->post('/update/{id}', 'TagController@update');
-				$router->post('/destroy/{id}', 'TagController@destroy');
+				$router->post('/update/{id}', 'TagController@update')->where('id', '[0-9]+');
+				$router->post('/destroy/{id}', 'TagController@destroy')->where('id', '[0-9]+');
 			}
 		);
 
 		Route::prefix('post')->group(
 			function($router) {
 				Route::get('/list', 'PostController@index');
-				Route::get('/create', 'PostController@create');
-				Route::post('/create', 'PostController@store');
-				Route::get('/{post}', 'PostController@detail');
-				Route::get('/create', 'PostController@create');
-				Route::get('/{post}/edit', 'PostController@edit');
-				Route::put('/{post}', 'PostController@update');
-				Route::get('/{post}/delete', 'PostController@delete');
+				Route::get('/show/{id}', 'PostController@show')->where('id', '[0-9]+');
+				Route::post('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
+				Route::post('/create', 'PostController@create');
+				Route::post('/destroy/{id}', 'PostController@destroy')->where('id', '[0-9]+');
 			}
 		);
+
+		Route::prefix('user')->group(
+			function($router) {
+				Route::get('/list', 'UserController@index');
+				Route::get('/show', 'UserController@show');
+				Route::post('/update/{id}', 'UserController@update')->where('id', '[0-9]+');
+				Route::post('/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+');
+			}
+		);
+
+		Route::prefix('upload')->group(
+			function($router) {
+				Route::post('/file', 'UploadController@upload');
+			}
+		);
+
 	// });
 });

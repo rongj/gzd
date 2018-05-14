@@ -10,14 +10,16 @@ class CategoryController extends Controller
 {
 	public function index()
 	{
-		$categories = Category::orderBy('weight', 'desc')->orderBy('id')->get();
+		$categories = Category::orderBy('weight', 'desc')
+			->orderBy('id')
+			->get();
 		return [
 			'code' => 200,
 			'data' => $categories,
 		];
 	}
 
-    public function add()
+    public function create()
     {
 		$category = [
 			'name' => request('name'),
@@ -48,7 +50,7 @@ class CategoryController extends Controller
     	];
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         if (empty($id)) {
             return [
@@ -64,15 +66,5 @@ class CategoryController extends Controller
                 'msg' => '删除成功',
             ];
         }
-    }
-
-    public function upload(Request $request) {
-    	$file = $request->file('plate-cover')->store('upload');
-    	return [
-    		'code' => 200,
-    		'data' => [
-    			'url' => '/'.$file
-    		],
-    	];
     }
 }

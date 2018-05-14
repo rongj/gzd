@@ -2,12 +2,15 @@
 	<div class="main-panel">
 		<el-breadcrumb separator="/" class="breadcrumb mb25">
 			<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-			<el-breadcrumb-item :to="{ path: '/users' }">用户管理</el-breadcrumb-item>
-			<el-breadcrumb-item>用户详情</el-breadcrumb-item>
+			<el-breadcrumb-item :to="{ path: '/article' }">文章管理</el-breadcrumb-item>
+			<el-breadcrumb-item>文章详情</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="main-content">
-			<h3>用户名：{{userinfo.name}}</h3>
-            <p>邮箱：{{userinfo.email}}</p>
+			<h3>{{articleDetail.title}}</h3>
+			<span>{{articleDetail.username}}</span>
+			<br>
+			<br>
+			<p>{{articleDetail.content}}</p>
 		</div>
 	</div>
 </template>
@@ -15,12 +18,12 @@
 	import { mapState } from 'vuex'
 	export default {
 		computed: {
-			...mapState(['userinfo', 'user'])
+			...mapState(['articleDetail'])
 		},
 
 		created(){
-			this.$store.dispatch('getUserDetail', {
-				id: this.$route.params.id || this.user.id
+			this.$store.dispatch('getArticleDetail', {
+				id: this.$route.params.id
 			})
 		}
 	}

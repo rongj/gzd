@@ -2,13 +2,13 @@
 
 import '../bootstrap.js'
 
-axios.defaults.baseURL = 'http://localhost:8088/api/'
+axios.defaults.baseURL = 'http://localhost:8089/api/'
 
 const api = {
 	// 登录
 	login: data => {
 		return axios({
-		    url: 'login',
+		    url: `passport/login`,
 		    method: 'post',
             params: data
 		})
@@ -17,7 +17,7 @@ const api = {
     // 登出
     logout: () => {
         return axios({
-            url: 'logout',
+            url: `passport/logout`,
             method: 'get'
         })
     },
@@ -25,25 +25,60 @@ const api = {
     // 注册
     register: data => {
         return axios({
-            url: 'register',
+            url: `passport/register`,
             method: 'post',
             params: data
         })
     },
 
     // 检查用户是否登录
-    checkLogined: () => {
+    checkLogin: () => {
         return axios({
-            url: 'checkLogined',
+            url: `passport/checkLogin`,
             method: 'get',
             withCredentials: true
+        })
+    },
+
+    // 获取用户列表
+    getUserList: data => {
+        return axios({
+            url: `user/list`,
+            method: 'get',
+            params: data
+        })
+    },
+
+    // 获取用户信息
+    getUserDetail: data => {
+        return axios({
+            url: `user/show`,
+            method: 'get',
+            params: data
+        })
+    },
+
+    // 修改用户信息
+    updateUser: data => {
+        return axios({
+            url: `user/update/${data.id}`,
+            method: 'post',
+            params: data
+        })
+    },
+
+    // 删除用户
+    destoryUser: data => {
+        return axios({
+            url: `user/update/${data.id}`,
+            method: 'post'
         })
     },
 
     // 获取所有类别
     getAllCategory: () => {
         return axios({
-            url: 'category/all',
+            url: `category/all`,
             method: 'get',
         })
     },
@@ -51,7 +86,7 @@ const api = {
 	// 添加类别
     addCategory: data => {
         return axios({
-            url: 'category/add',
+            url: `category/create`,
             method: 'post',
             params: data
         })
@@ -60,7 +95,7 @@ const api = {
     // 修改类别
     updateCategory: data => {
         return axios({
-            url: 'category/update',
+            url: `category/update/${data.id}`,
             method: 'post',
             params: data
         })
@@ -69,7 +104,7 @@ const api = {
     // 删除类别
     deleteCategory: data => {
         return axios({
-            url: `category/delete/${data.id}`,
+            url: `category/destroy/${data.id}`,
             method: 'post',
         })
     },
@@ -77,7 +112,7 @@ const api = {
     // 获取所有板块
     getAllPlate: () => {
         return axios({
-            url: 'plate/all',
+            url: `plate/all`,
             method: 'get',
         })
     },
@@ -85,7 +120,7 @@ const api = {
     // 添加板块
     addPlate: data => {
         return axios({
-            url: 'plate/add',
+            url: `plate/add`,
             method: 'post',
             params: data
         })
@@ -94,7 +129,7 @@ const api = {
     // 修改板块
     updatePlate: data => {
         return axios({
-            url: 'plate/update',
+            url: `plate/update`,
             method: 'post',
             params: data
         })
@@ -111,7 +146,7 @@ const api = {
     // 获取所有标签
     getAllTag: () => {
         return axios({
-            url: 'tag/all',
+            url: `tag/all`,
             method: 'get',
         })
     },
@@ -119,7 +154,7 @@ const api = {
     // 添加标签
     createTag: data => {
         return axios({
-            url: 'tag/create',
+            url: `tag/create`,
             method: 'post',
             params: data
         })
@@ -143,13 +178,48 @@ const api = {
     },
 
     // 获取文章列表
-    getPostsList: data => {
+    getArticleList: data => {
         return axios({
-            url: 'post/list',
+            url: `post/list`,
             method: 'get',
             params: data
         })
     },
+
+    // 添加文章
+	createArticle: data => {
+		return axios({
+			url: `post/create`,
+			method: 'post',
+			params: data
+		})
+	},
+
+	// 删除文章
+	deleteArticle: data => {
+		return axios({
+			url: `post/destroy/${data.id}`,
+			method: 'post'
+		})
+	},
+
+	// 更新文章
+	updateArticle: data => {
+		return axios({
+			url: `post/update/${data.id}`,
+			method: 'post',
+			params: data
+		})
+	},
+
+	// 查看文章详情
+	showArticle: data => {
+		return axios({
+			url: `post/show/${data.id}`,
+			method: 'get',
+			params: data
+		})
+	},
 
 }
 

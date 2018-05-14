@@ -1,19 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import layout from '../backend/layout.vue'
-import index from '../backend/index.vue'
-import login from '../backend/login.vue'
-import users from '../backend/users.vue'
-import adduser from '../backend/adduser.vue'
-import userinfo from '../backend/userinfo.vue'
-import category from '../backend/category.vue'
-import subplate from '../backend/subplate.vue'
-import tag from '../backend/tag.vue'
-import article from '../backend/article.vue'
-import addarticle from '../backend/addarticle.vue'
-import editarticle from '../backend/editarticle.vue'
-import log from '../backend/log.vue'
-import notFound from '../backend/notFound.vue'
 
 Vue.use(Router)
 
@@ -23,73 +9,73 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
-			component: layout,
+			component: resolve => require(['../backend/layout.vue'], resolve),
 			children: [
 				{
 					path: '',
-					component: index,
+					component: resolve => require(['../backend/index.vue'], resolve),
 					name: 'index',
 				},
 				{
 					path: 'users',
-					component: users,
+					component: resolve => require(['../backend/users.vue'], resolve),
 					name: 'users',
 				},
 				{
 					path: 'adduser',
-					component: adduser,
+					component: resolve => require(['../backend/adduser.vue'], resolve),
 					name: 'adduser',
 				},
 				{
-					path: 'userinfo',
-					component: userinfo,
+					path: 'userinfo/:id?',
+					component: resolve => require(['../backend/userinfo.vue'], resolve),
 					name: 'userinfo',
 				},
 				{
 					path: 'category',
-					component: category,
+					component: resolve => require(['../backend/category.vue'], resolve),
 					name: 'category',
 				},
 				{
 					path: 'subplate',
-					component: subplate,
+					component: resolve => require(['../backend/subplate.vue'], resolve),
 					name: 'subplate',
 				},
 				{
 					path: 'tag',
-					component: tag,
+					component: resolve => require(['../backend/tag.vue'], resolve),
 					name: 'tag',
 				},
 				{
 					path: 'article',
-					component: article,
+					component: resolve => require(['../backend/article.vue'], resolve),
 					name: 'article',
 				},
 				{
-					path: 'addarticle',
-					component: addarticle,
-					name: 'addarticle',
+					path: 'articleDetail/:id',
+					component: resolve => require(['../backend/articleDetail.vue'], resolve),
+					name: 'articleDetail',
 				},
 				{
-					path: 'editarticle',
-					component: editarticle,
-					name: 'editarticle',
+					path: 'articleEdit/:type/:id?',
+					component: resolve => require(['../backend/articleEdit.vue'], resolve),
+					name: 'articleEdit',
 				},
 				{
 					path: 'log',
-					component: log,
+					component: resolve => require(['../backend/log.vue'], resolve),
 					name: 'log',
 				},
 			]
 		},
 		{
 			path: '/login',
-			component: login,
+			component: resolve => require(['../backend/login.vue'], resolve),
 			name: 'login',
 		},
 		{
 			path: '*',
-			component: notFound
+			component: resolve => require(['../backend/notFound.vue'], resolve)
 		},
 	]
 })
