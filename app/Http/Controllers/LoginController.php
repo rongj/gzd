@@ -28,48 +28,33 @@ class LoginController extends Controller
 
 		if(\Auth::attempt($user, $remember)) {
 			// $accessToken = \Auth::user()->createToken('user_token')->accessToken;
-			return [
-				'code' => 200,
-				'msg' => '登录成功',
-				'data' => [
-					// 'token' => $accessToken,
-					'name' => \Auth::user()->name,
-					'userid' => \Auth::id()
-				] 
-			];
+
+			return jsonWrite(200, [
+				// 'token' => $accessToken,
+				'name' => \Auth::user()->name,
+				'userid' => \Auth::id()
+			]);
 		}
 		
-		return [
-			'code' => 201,
-			'msg' => '账号或密码错误'
-		];
+		return jsonWrite(201, '账号或密码错误');
 	}
 
 	// 登出行为
 	public function logout()
 	{
 		\Auth::logout();
-		return [
-			'code' => 200,
-			'msg' => '登出成功'
-		];
+		return jsonWrite(200, '登出成功');
 	}
 
 	// 检测用户是否已登录
 	public function checkLogin(Request $request)
 	{
 		if(\Auth::check()){
-			return [
-				'code' => 200,
-				'data' => [
-					'username' => \Auth::user()->name,
-					'id' => \Auth::id()
-				] 
-			];
+			return jsonWrite(200, [
+				'username' => \Auth::user()->name,
+				'id' => \Auth::id()
+			]);
 		}
-		return [
-			'code' => 201,
-			'msg' => '请重新登录'
-		]; 
+		return jsonWrite(201, '请重新登录');
 	}
 }

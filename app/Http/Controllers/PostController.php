@@ -20,26 +20,23 @@ class PostController extends Controller
 			->limit($pageSize)
 			->get();
 		$totalCount = Post::count();
-        return [
-            'code' => 200,
-            'data' => [
-				'dataList' => $posts,
-				'pageInfo' => [
-					'totalCount' => $totalCount,
-					'totalPage' => $totalCount 
-				]
+		return jsonWrite(200, [
+			'dataList' => $posts,
+			'pageInfo' => [
+				'totalCount' => $totalCount,
+				'totalPage' => $totalCount 
 			]
-        ];
+		]);
     }
 
     // 文章详情
     public function show($id)
     {
 		$post = Post::where('id', $id)->get();
-		return [
+		return jsonWrite(200, [
 			'code' => 200,
 			'data' => $post[0]
-		];
+		]);
     }
 
     // 修改
@@ -50,10 +47,7 @@ class PostController extends Controller
 			'content' => request('content'),
 		];
 		Post::where('id', $id)->update($post);
-		return [
-			'code' => 200,
-			'msg' => '修改成功'
-		];
+		return jsonWrite(200, '修改成功');
     }
 
 	// 新增
@@ -64,12 +58,8 @@ class PostController extends Controller
 			'content' => request('content'),
 			'user_id' => \Auth::id()
 		];
-
 		Post::create($post);
-		return [
-			'code' => 200,
-			'msg' => '添加成功',
-		];
+		return jsonWrite(200, '添加成功');
 	}
 
 	// 删除
@@ -77,15 +67,9 @@ class PostController extends Controller
 	{
 		$post = Post::where('id', $id)->get();
 		if($post[0]->user_id === \Auth::id()) {
-			return [
-				'code' => 200,
-				'msg' => '删除成功',
-			];
+			return jsonWrite(200, '删除成功');
 		} else {
-			return [
-				'code' => 201,
-				'msg' => '没有删除权限',
-			];
+			return jsonWrite(201, '没有删除权限');
 		}
 	}
 }

@@ -17,16 +17,13 @@ class UserController extends Controller
 			->limit($pageSize)
 			->get();
 		$totalCount = User::count();
-        return [
-            'code' => 200,
-            'data' => [
-                'dataList' => $posts,
-				'pageInfo' => [
-					'totalCount' => $totalCount,
-					'totalPage' => $totalCount 
-				]
+        return jsonWrite(200, [
+            'dataList' => $posts,
+            'pageInfo' => [
+                'totalCount' => $totalCount,
+                'totalPage' => $totalCount 
             ]
-        ];
+        ]);
     }
 
     // 用户详情
@@ -34,10 +31,7 @@ class UserController extends Controller
     {
         $id = request('id') ?: \Auth::id();
         $user = User::where('id', $id)->get();
-        return [
-            'code' => 200,
-            'data' => $user[0]
-        ];
+        return jsonWrite(200, $user[0]);
     }
 
     // 修改用户信息

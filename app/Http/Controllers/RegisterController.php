@@ -19,10 +19,7 @@ class RegisterController extends Controller
 		]);
 
 		if($validator->fails()) {
-			return [
-				'code' => 201,
-				'msg' => $validator->errors()->all()[0]
-			];
+			return jsonWrite(201, $validator->errors()->all()[0]);
 		}
 
 		$name = request('name');
@@ -39,13 +36,7 @@ class RegisterController extends Controller
 		$accessToken = $user->createToken('user_token')->accessToken;
 
 		if($user) {
-			return [
-				'code' => 200,
-				'msg' => '添加成功',
-				'data' => compact('name', 'email', 'role_name', 'accessToken')
-			];
+			return jsonWrite(200, compact('name', 'email', 'role_name', 'accessToken'));
 		}
-		
-
 	}
 }

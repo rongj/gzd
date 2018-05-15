@@ -13,10 +13,7 @@ class PlateController extends Controller
         foreach ($plates as $item) {
             $item['category_name'] = $item->category->name ?: '';
         }
-        return [
-            'code' => 200,
-            'data' => $plates,
-        ];
+        return jsonWrite(200, $plates);
     }
 
     public function add()
@@ -30,10 +27,8 @@ class PlateController extends Controller
         ];
 
         Plate::create($plate);
-        return [
-            'code' => 200,
-            'msg' => '添加成功',
-        ];
+
+        return jsonWrite(200, '添加成功');
     }
 
     public function update()
@@ -46,10 +41,8 @@ class PlateController extends Controller
             'category_id' => request('category_id'),
         ];
         Plate::where('id', request('id'))->update($plate);
-        return [
-            'code' => 200,
-            'msg' => '更新成功',
-        ];
+
+        return jsonWrite(200, '更新成功');
     }
 
     public function delete($id)
@@ -62,10 +55,7 @@ class PlateController extends Controller
         }
         $result = Plate::where('id', $id)->delete();
         if($result) {
-            return [
-                'code' => 200,
-                'msg' => '删除成功',
-            ];
+            return jsonWrite(200, '删除成功');
         }
     }
 

@@ -21,7 +21,7 @@ Route::get('/admin/{path?}', function (){
 })->where('path', '[\/\w\.-]*');
 
 /* api */
-Route::group(['prefix' => 'api'], function() {
+Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 	// Route::group(['middleware' => 'auth:admin'], function(){
 		Route::prefix('passport')->group(
 			function($router) {

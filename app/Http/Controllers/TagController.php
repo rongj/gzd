@@ -88,10 +88,7 @@ class TagController extends Controller
     		'is_active' => request('is_active') === 'true' ?: 0,
     	];
     	Tag::where('id', $id)->update($tag);
-    	return [
-    		'code' => 200,
-    		'msg' => '更新成功',
-    	];
+        return jsonWrite(200, '更新成功');
     }
 
     /**

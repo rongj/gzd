@@ -13,10 +13,8 @@ class CategoryController extends Controller
 		$categories = Category::orderBy('weight', 'desc')
 			->orderBy('id')
 			->get();
-		return [
-			'code' => 200,
-			'data' => $categories,
-		];
+
+		return jsonWrite(200, $categories);
 	}
 
     public function create()
@@ -27,12 +25,9 @@ class CategoryController extends Controller
 			'describe' => request('describe'),
 			'weight' => request('weight'),
 		];
-
 		Category::create($category);
-		return [
-			'code' => 200,
-			'msg' => '添加成功',
-		];
+
+		return jsonWrite(200, '添加成功');
     }
 
     public function update()
@@ -44,27 +39,19 @@ class CategoryController extends Controller
     		'weight' => request('weight'),
     	];
     	Category::where('id', request('id'))->update($category);
-    	return [
-    		'code' => 200,
-    		'msg' => '更新成功',
-    	];
+
+		return jsonWrite(200, '更新成功');
     }
 
     public function destroy($id)
     {
         if (empty($id)) {
-            return [
-                'code' => 201,
-                'msg' => 'id不能为空',
-            ];
+			return jsonWrite(201, 'id不能为空');
         }
         $result = Category::where('id', $id)->delete();
         $result2 = Plate::where('category_id', $id)->delete();
         if($result && $result2) {
-            return [
-                'code' => 200,
-                'msg' => '删除成功',
-            ];
+			return jsonWrite(200, '删除成功');
         }
     }
 }
