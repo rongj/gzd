@@ -1,18 +1,18 @@
-webpackJsonp([10],{
+webpackJsonp([5],{
 
-/***/ 218:
+/***/ 221:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(245)
+  __webpack_require__(222)
 }
-var normalizeComponent = __webpack_require__(47)
+var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(247)
+var __vue_script__ = __webpack_require__(224)
 /* template */
-var __vue_template__ = __webpack_require__(248)
+var __vue_template__ = __webpack_require__(225)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\backend\\category.vue"
+Component.options.__file = "resources\\assets\\js\\backend\\subplate.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-01f9aac5", Component.options)
+    hotAPI.createRecord("data-v-75d7469d", Component.options)
   } else {
-    hotAPI.reload("data-v-01f9aac5", Component.options)
+    hotAPI.reload("data-v-75d7469d", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +52,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 245:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(246);
+var content = __webpack_require__(223);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(48)("ab9d1398", content, false, {});
+var update = __webpack_require__(10)("00531348", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/.0.28.10@css-loader/index.js!../../../../node_modules/.13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-01f9aac5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/.6.0.7@sass-loader/lib/loader.js!../../../../node_modules/.13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./category.vue", function() {
-     var newContent = require("!!../../../../node_modules/.0.28.10@css-loader/index.js!../../../../node_modules/.13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-01f9aac5\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/.6.0.7@sass-loader/lib/loader.js!../../../../node_modules/.13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./category.vue");
+   module.hot.accept("!!../../../../node_modules/.0.28.10@css-loader/index.js!../../../../node_modules/.13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-75d7469d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/.6.0.7@sass-loader/lib/loader.js!../../../../node_modules/.13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./subplate.vue", function() {
+     var newContent = require("!!../../../../node_modules/.0.28.10@css-loader/index.js!../../../../node_modules/.13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-75d7469d\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/.6.0.7@sass-loader/lib/loader.js!../../../../node_modules/.13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./subplate.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,10 +79,10 @@ if(false) {
 
 /***/ }),
 
-/***/ 246:
+/***/ 223:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(23)(false);
+exports = module.exports = __webpack_require__(7)(false);
 // imports
 
 
@@ -94,12 +94,23 @@ exports.push([module.i, "\n.table-align-center td, .table-align-center th {\n  t
 
 /***/ }),
 
-/***/ 247:
+/***/ 224:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_admin__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_admin__ = __webpack_require__(271);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -175,26 +186,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			tableData: [],
 			showPlateDialog: false,
 			editType: 1,
+			allCategory: [],
 			form: {
+				category_id: '',
 				name: '',
 				cover: '',
 				describe: '',
 				weight: '',
-				is_active: true
+				is_active: 1
 			}
 		};
 	},
 	created: function created() {
 		this.getAllCategory();
+		this.getAllPlate();
 	},
 
 
 	methods: {
-		// 获取所有类别
-		getAllCategory: function getAllCategory() {
+		// 获取所有版块
+		getAllPlate: function getAllPlate() {
 			var _this = this;
 
-			__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].getAllCategory().then(function (res) {
+			__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].getAllPlate().then(function (res) {
 				if (res.data.code === 200) {
 					_this.tableData = res.data.data;
 				}
@@ -204,44 +218,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 
 
-		// 添加类别
+		// 获取所有类别
+		getAllCategory: function getAllCategory() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].getAllCategory().then(function (res) {
+				if (res.data.code === 200) {
+					_this2.allCategory = res.data.data;
+				}
+			}).catch(function (err) {
+				console.error(err);
+			});
+		},
+
+
+		// 添加版块
 		handleAdd: function handleAdd() {
 			this.showPlateDialog = true;
 			this.form = {
 				weight: 0,
-				is_active: true,
+				is_active: 1,
 				cover: ''
 			};
 			this.editType = 1;
 		},
 
 
-		// 编辑类别
+		// 编辑版块
 		handleEdit: function handleEdit(index, row) {
 			this.showPlateDialog = true;
+			console.log(row);
 			this.form = row;
-			this.form.is_active = !!row.is_active, this.editType = 2;
+			this.editType = 2;
 		},
 
 
-		// 删除类别
+		// 删除版块
 		handleDelete: function handleDelete(index, row) {
-			var _this2 = this;
+			var _this3 = this;
 
-			this.$confirm('此操作将永久删除该类别及该类别下的所有子板块, 是否继续?', '', {
+			this.$confirm('此操作将永久删除该板块, 是否继续?', '', {
 				confirmButtonText: '确定',
 				cancelButtonText: '取消',
 				type: 'warning'
 			}).then(function () {
-				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].deleteCategory({
+				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].deletePlate({
 					id: row.id
 				}).then(function (res) {
 					if (res.data.code === 200) {
-						_this2.$message({
+						_this3.$message({
 							type: 'success',
 							message: '删除成功!'
 						});
-						_this2.getAllCategory();
+						_this3.getAllPlate();
 					}
 				}).catch(function () {});
 			});
@@ -254,30 +283,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		beforeUpload: function beforeUpload(file) {},
 		handleSavePlate: function handleSavePlate() {
-			var _this3 = this;
+			var _this4 = this;
 
 			if (this.editType === 2) {
-				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].updateCategory(this.form).then(function (res) {
+				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].updatePlate(this.form).then(function (res) {
 					if (res.data.code === 200) {
-						_this3.showPlateDialog = false;
-						_this3.$message({
+						_this4.showPlateDialog = false;
+						_this4.$message({
 							message: '修改成功',
 							type: 'success'
 						});
-						_this3.getAllCategory();
+						_this4.getAllPlate();
 					}
 				}).catch(function (err) {
 					console.error(err);
 				});
 			} else if (this.editType === 1) {
-				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].addCategory(this.form).then(function (res) {
+				__WEBPACK_IMPORTED_MODULE_0__api_admin__["a" /* default */].addPlate(this.form).then(function (res) {
 					if (res.data.code === 200) {
-						_this3.showPlateDialog = false;
-						_this3.$message({
+						_this4.showPlateDialog = false;
+						_this4.$message({
 							message: '添加成功',
 							type: 'success'
 						});
-						_this3.getAllCategory();
+						_this4.getAllPlate();
 					}
 				}).catch(function (err) {
 					console.error(err);
@@ -289,7 +318,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 248:
+/***/ 225:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -312,7 +341,7 @@ var render = function() {
             _vm._v("分类管理")
           ]),
           _vm._v(" "),
-          _c("el-breadcrumb-item", [_vm._v("所有类别")])
+          _c("el-breadcrumb-item", [_vm._v("所有板块")])
         ],
         1
       ),
@@ -335,7 +364,7 @@ var render = function() {
                   },
                   on: { click: _vm.handleAdd }
                 },
-                [_vm._v("添加类别")]
+                [_vm._v("添加版块")]
               )
             ],
             1
@@ -349,14 +378,14 @@ var render = function() {
               attrs: { data: _vm.tableData, border: "" }
             },
             [
-              _c("el-table-column", { attrs: { prop: "id", label: "类别id" } }),
+              _c("el-table-column", { attrs: { prop: "id", label: "版块id" } }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "name", label: "类别名称" }
+                attrs: { prop: "name", label: "版块名称" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { label: "类别图标", "class-name": "item-icon" },
+                attrs: { label: "版块图标", "class-name": "item-icon" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -368,11 +397,15 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "describe", label: "类别描述" }
+                attrs: { prop: "category_name", label: "板块类别" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "weight", label: "类别排序" }
+                attrs: { prop: "describe", label: "版块描述" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { prop: "weight", label: "版块排序" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
@@ -439,7 +472,7 @@ var render = function() {
         "el-dialog",
         {
           attrs: {
-            title: _vm.editType === 1 ? "添加类别" : "编辑类别",
+            title: _vm.editType === 1 ? "添加板块" : "编辑板块",
             visible: _vm.showPlateDialog
           },
           on: {
@@ -457,8 +490,35 @@ var render = function() {
                 "el-form-item",
                 { attrs: { label: "类别名称", "label-width": "80px" } },
                 [
+                  _c(
+                    "el-select",
+                    {
+                      attrs: { placeholder: "请选择" },
+                      model: {
+                        value: _vm.form.category_id,
+                        callback: function($$v) {
+                          _vm.$set(_vm.form, "category_id", $$v)
+                        },
+                        expression: "form.category_id"
+                      }
+                    },
+                    _vm._l(_vm.allCategory, function(item) {
+                      return _c("el-option", {
+                        key: item.id,
+                        attrs: { label: item.name, value: item.id }
+                      })
+                    })
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-form-item",
+                { attrs: { label: "版块名称", "label-width": "80px" } },
+                [
                   _c("el-input", {
-                    attrs: { placeholder: "请输入类别名称" },
+                    attrs: { placeholder: "请输入版块名称" },
                     model: {
                       value: _vm.form.name,
                       callback: function($$v) {
@@ -473,14 +533,14 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-form-item",
-                { attrs: { label: "类别图标", "label-width": "80px" } },
+                { attrs: { label: "版块图标", "label-width": "80px" } },
                 [
                   _c(
                     "el-upload",
                     {
                       staticClass: "avatar-uploader",
                       attrs: {
-                        action: "/api/upload/file",
+                        action: "/api/file/upload",
                         name: "plate-cover",
                         "show-file-list": false,
                         "on-success": _vm.handleUploadSuccess,
@@ -520,13 +580,13 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-form-item",
-                { attrs: { label: "类别描述", "label-width": "80px" } },
+                { attrs: { label: "版块描述", "label-width": "80px" } },
                 [
                   _c("el-input", {
                     attrs: {
                       type: "textarea",
                       autosize: "",
-                      placeholder: "请输入类别描述"
+                      placeholder: "请输入版块描述"
                     },
                     model: {
                       value: _vm.form.describe,
@@ -542,7 +602,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "el-form-item",
-                { attrs: { label: "类别排序", "label-width": "80px" } },
+                { attrs: { label: "版块排序", "label-width": "80px" } },
                 [
                   _c("el-input", {
                     attrs: { min: "0", max: "99", type: "number" },
@@ -622,7 +682,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-01f9aac5", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-75d7469d", module.exports)
   }
 }
 

@@ -39,6 +39,7 @@ class PlateController extends Controller
             'describe' => request('describe'),
             'weight' => request('weight'),
             'category_id' => request('category_id'),
+            'is_active' => request('is_active') === 'true' ?: 0,
         ];
         Plate::where('id', request('id'))->update($plate);
 

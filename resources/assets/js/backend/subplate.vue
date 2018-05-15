@@ -91,7 +91,7 @@
 					cover: '',
 					describe: '',
 					weight: '',
-					is_active: 1,
+					is_active: true,
 				},
 			}
 		},
@@ -129,7 +129,7 @@
 				this.showPlateDialog = true;
 				this.form = {
 					weight: 0,
-					is_active: 1,
+					is_active: true,
 					cover: ''
 				};
 				this.editType = 1;
@@ -138,8 +138,8 @@
 			// 编辑版块
 			handleEdit(index, row) {
 				this.showPlateDialog = true;
-				console.log(row);
 				this.form = row;
+				this.form.is_active = !!row.is_active,
 				this.editType = 2;
 			},
 

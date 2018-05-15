@@ -37,6 +37,7 @@ class CategoryController extends Controller
     		'cover' => request('cover'),
     		'describe' => request('describe'),
     		'weight' => request('weight'),
+            'is_active' => request('is_active') === 'true' ?: 0,
     	];
     	Category::where('id', request('id'))->update($category);
 

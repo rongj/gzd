@@ -48,7 +48,6 @@
 					</el-upload>
 				</el-form-item>
 				<el-form-item label="是否显示" label-width="80px">
-					{{form.is_active}}
 					<el-switch v-model="form.is_active"></el-switch>
 				</el-form-item>
 			</el-form>
@@ -104,8 +103,8 @@
 			// 编辑标签
 			handleEdit(index, row) {
 				this.showDialog = true;
-				console.log(row, this.form);
 				this.form = row;
+				this.form.is_active = !!row.is_active,
 				this.editType = 2;
 			},
 
