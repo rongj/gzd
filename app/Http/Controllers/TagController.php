@@ -15,10 +15,7 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        return [
-			'code' => 200,
-			'data' => $tags,
-		];
+        return jsonWrite(200, $tags);
     }
 
     /**
@@ -32,12 +29,8 @@ class TagController extends Controller
 			'name' => request('name'),
 			'cover' => request('cover'),
 		];
-
 		Tag::create($tag);
-		return [
-			'code' => 200,
-			'msg' => '添加成功',
-		];
+        return jsonWrite(200, '添加成功');
     }
 
     /**

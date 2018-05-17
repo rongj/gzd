@@ -4,9 +4,6 @@ namespace App;
 
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-// use App\Model;
-// use Illuminate\Database\Eloquent\Model;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -17,7 +14,8 @@ class User extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
-    public function post(){
-        return $this->hasMany(Posts::class);
+    public function phone ()
+    {
+        return $this->hasOne('App\Phone')->withDefault();
     }
 }

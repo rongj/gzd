@@ -50,7 +50,7 @@
 				</el-form-item>
 				<el-form-item label="版块图标" label-width="80px">
 					<el-upload class="avatar-uploader" 
-						action="/api/file/upload"
+						action="/api/upload/img"
 						name="plate-cover"
 						:show-file-list="false"
 						:on-success="handleUploadSuccess"

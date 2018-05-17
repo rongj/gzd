@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
@@ -18,7 +19,21 @@ class PostController extends Controller
     	$posts = Post::orderBy('id')
 			->offset($pageSize*($page-1))
 			->limit($pageSize)
-			->get();
+			->get(['id', 'title']);
+
+		foreach($posts as $post) {
+			$id = $post->id;
+			$post['username'] = Post::find($id)->user->name;
+			$comments = Post::find($id)->comments()->get(['id', 'content', 'user_id']);
+			$post['comment_num'] = count($comments);
+			if(count($comments) > 0){
+				foreach($comments as $comment) {
+					$comment['username'] = User::where('id', $comment->user_id)->first()->name;
+				}
+			}
+			$post['comment_list'] = $comments;
+		}
+		
 		$totalCount = Post::count();
 		return jsonWrite(200, [
 			'dataList' => $posts,
@@ -33,10 +48,7 @@ class PostController extends Controller
     public function show($id)
     {
 		$post = Post::where('id', $id)->get();
-		return jsonWrite(200, [
-			'code' => 200,
-			'data' => $post[0]
-		]);
+		return jsonWrite(200, $post[0]);
     }
 
     // 修改

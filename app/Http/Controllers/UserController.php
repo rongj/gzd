@@ -30,8 +30,10 @@ class UserController extends Controller
     public function show()
     {
         $id = request('id') ?: \Auth::id();
-        $user = User::where('id', $id)->get();
-        return jsonWrite(200, $user[0]);
+        $user = User::where('id', $id)->first();
+        $phone = User::find($id)->phone;
+        $user['num'] = $phone->num;
+        return jsonWrite(200, $user);
     }
 
     // 修改用户信息

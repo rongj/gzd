@@ -61,26 +61,26 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 
 		Route::prefix('post')->group(
 			function($router) {
-				Route::get('/list', 'PostController@index');
-				Route::get('/show/{id}', 'PostController@show')->where('id', '[0-9]+');
-				Route::post('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
-				Route::post('/create', 'PostController@create');
-				Route::post('/destroy/{id}', 'PostController@destroy')->where('id', '[0-9]+');
+				$router::get('/list', 'PostController@index');
+				$router::get('/show/{id}', 'PostController@show')->where('id', '[0-9]+');
+				$router::post('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
+				$router::post('/create', 'PostController@create');
+				$router::post('/destroy/{id}', 'PostController@destroy')->where('id', '[0-9]+');
 			}
 		);
 
 		Route::prefix('user')->group(
 			function($router) {
-				Route::get('/list', 'UserController@index');
-				Route::get('/show', 'UserController@show');
-				Route::post('/update/{id}', 'UserController@update')->where('id', '[0-9]+');
-				Route::post('/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+');
+				$router::get('/list', 'UserController@index');
+				$router::get('/show', 'UserController@show');
+				$router::post('/update/{id}', 'UserController@update')->where('id', '[0-9]+');
+				$router::post('/destroy/{id}', 'UserController@destroy')->where('id', '[0-9]+');
 			}
 		);
 
 		Route::prefix('upload')->group(
 			function($router) {
-				Route::post('/file', 'UploadController@upload');
+				$router::post('/img', 'UploadController@upload')->name('file.upload');
 			}
 		);
 

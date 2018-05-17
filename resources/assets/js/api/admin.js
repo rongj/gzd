@@ -221,6 +221,19 @@ const api = {
 		})
 	},
 
+    // 图片上传
+    imgUpload: data => {
+        return axios({
+			url: `post/upload/img`,
+			method: 'get',
+			params: data
+		})
+        //  formData.append("imgFile", document.getElementById("filebox_file_id_1").files[0]);
+        //         this.$store.dispatch('uploadImg', {
+        //             formData: formData,
+        //             projectName: 'primHeadImg'
+        //         })
+    }
 }
 
 export default api;
