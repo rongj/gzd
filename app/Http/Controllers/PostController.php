@@ -25,13 +25,17 @@ class PostController extends Controller
 			$id = $post->id;
 			$post['username'] = Post::find($id)->user->name;
 			$comments = Post::find($id)->comments()->get(['id', 'content', 'user_id']);
+			$tags = Post::find($id)->tags()->get(['tag_id', 'name', 'cover']);
 			$post['comment_num'] = count($comments);
 			if(count($comments) > 0){
 				foreach($comments as $comment) {
 					$comment['username'] = User::where('id', $comment->user_id)->first()->name;
+					// echo $comment->user_id;
+					// echo Post::find($comment->user_id)->comment_user;
 				}
 			}
 			$post['comment_list'] = $comments;
+			$post['tags'] = $tags;
 		}
 		
 		$totalCount = Post::count();

@@ -25,9 +25,15 @@ class Post extends Model
         return $this->hasMany('App\Comment', 'article_id');
     }
 
+    // 关联标签
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
+    }
+
     // 获取评论用户
-    // public function comment_user()
-    // {
-    //     return $this->hasMany('App\Comment', 'article_id')->
-    // }
+    public function comment_user()
+    {
+        return $this->hasManyThrough('App\Comment', 'App\User');
+    }
 }
