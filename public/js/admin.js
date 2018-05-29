@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/lazy/" + ({}[chunkId]||chunkId) + ".js?" + {"0":"669138b41b9c43139294","1":"1c0c0c07405673148889","2":"7a0ee92665e9cfba38be","3":"4c80fda92b8b9997e373","4":"ae167c5d9a8c1ef845b2","5":"075c9a4703dfeee0d9f3","6":"94d1155c1ca62f215f38","7":"2f0c878559b06c59a1a5","8":"676ab022a478f103354f","9":"b1c0488535a2651b43f2","10":"b47b4c81aa2e94d7d2b6","11":"308912b59f1a1cd7fb37","12":"10a65be6fbf8cc6eec50","13":"e47d28242aee62f2ba5d"}[chunkId] + "";
+/******/ 		script.src = __webpack_require__.p + "js/lazy/" + ({}[chunkId]||chunkId) + ".js?" + {"0":"f3f0a1ffa8f953affb20","1":"1c0c0c07405673148889","2":"7a0ee92665e9cfba38be","3":"4c80fda92b8b9997e373","4":"ae167c5d9a8c1ef845b2","5":"075c9a4703dfeee0d9f3","6":"94d1155c1ca62f215f38","7":"2f0c878559b06c59a1a5","8":"676ab022a478f103354f","9":"5b82e6c04f01a1306ac9","10":"b47b4c81aa2e94d7d2b6","11":"308912b59f1a1cd7fb37","12":"10a65be6fbf8cc6eec50","13":"e47d28242aee62f2ba5d"}[chunkId] + "";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -65273,15 +65273,10 @@ var api = {
     // 图片上传
     imgUpload: function imgUpload(data) {
         return axios({
-            url: 'post/upload/img',
+            url: 'post/upload/file',
             method: 'get',
             params: data
         });
-        //  formData.append("imgFile", document.getElementById("filebox_file_id_1").files[0]);
-        //         this.$store.dispatch('uploadImg', {
-        //             formData: formData,
-        //             projectName: 'primHeadImg'
-        //         })
     }
 };
 
@@ -65489,11 +65484,18 @@ var state = {
 	articleDetail: {
 		id: null,
 		title: '',
-		content: ''
-	}
+		content: '',
+		category_id: null,
+		tags: [],
+		cover: ''
+	},
+	categoryList: [],
+	tagList: []
 };
 
-var getters = {};
+var getters = {
+	// tags: state => state.articleDetail.tags.map(l => l.tag_id)
+};
 
 var actions = {
 	// 登录
@@ -65634,7 +65636,11 @@ var actions = {
 				commit({
 					type: 'save',
 					key: 'articleDetail',
-					data: res.data.data
+					data: _extends({}, res.data.data, {
+						tags: res.data.data.tags.map(function (l) {
+							return l.tag_id;
+						})
+					})
 				});
 			}
 		});
@@ -65667,6 +65673,38 @@ var actions = {
 
 		return __WEBPACK_IMPORTED_MODULE_3__api_admin__["a" /* default */].deleteArticle(data).then(function (res) {
 			return res.data;
+		});
+	},
+
+
+	// 所有类别
+	getAllCategory: function getAllCategory(_ref12) {
+		var commit = _ref12.commit;
+
+		return __WEBPACK_IMPORTED_MODULE_3__api_admin__["a" /* default */].getAllCategory().then(function (res) {
+			if (res.data.code === 200) {
+				commit({
+					type: 'save',
+					key: 'categoryList',
+					data: res.data.data
+				});
+			}
+		});
+	},
+
+
+	// 所有标签
+	getAllTag: function getAllTag(_ref13) {
+		var commit = _ref13.commit;
+
+		return __WEBPACK_IMPORTED_MODULE_3__api_admin__["a" /* default */].getAllTag().then(function (res) {
+			if (res.data.code === 200) {
+				commit({
+					type: 'save',
+					key: 'tagList',
+					data: res.data.data
+				});
+			}
 		});
 	}
 };

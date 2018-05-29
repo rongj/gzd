@@ -31,6 +31,12 @@ class Post extends Model
         return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
     }
 
+    // 关联类别
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
     // 获取评论用户
     public function comment_user()
     {

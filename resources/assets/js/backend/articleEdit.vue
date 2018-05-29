@@ -10,6 +10,43 @@
             <el-form-item label="标题" prop="title">
                 <el-input v-model="articleDetail.title"></el-input>
             </el-form-item>
+            <el-form-item label="类别">
+                <el-select placeholder="请选择类别" v-model="articleDetail.category_id" style="width: 100%">
+                    <el-option 
+                        v-for="item in categoryList"
+                        :label="item.name"
+                        :value="item.id"
+                        :key="item.name">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="标签">
+                <el-select
+                    v-model="articleDetail.tags"
+                    multiple
+                    filterable
+                    allow-create
+                    default-first-option
+                    placeholder="请选择标签"
+                    style="width: 100%">
+                    <el-option
+                        v-for="item in tagList"
+                        :key="item.id"
+                        :label="item.name"
+                        :value="item.id">
+                    </el-option>
+                </el-select>
+            </el-form-item>
+            <el-form-item label="封面">
+                <el-upload class="avatar-uploader" 
+                    action="/api/upload/img"
+                    name="plate-cover"
+                    :show-file-list="false"
+                    :on-success="handleUploadSuccess">
+                    <img v-show="articleDetail.cover" :src="articleDetail.cover" class="avatar">
+                    <i v-show="!articleDetail.cover" class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
             <el-form-item label="内容" prop="markdown">
                  <mavon-editor v-model="articleDetail.content"/>
             </el-form-item>
@@ -35,14 +72,17 @@
             return {
                 type: 'create',
                 href: location.href,
-                id: null
+                id: null,
+                tags: []
             }
         },
         computed: {
-            ...mapState(['articleDetail'])
+            ...mapState(['articleDetail', 'categoryList', 'tagList'])
         },
         created(){
             this.type = this.$route.params.type
+            this.$store.dispatch('getAllCategory')
+            this.$store.dispatch('getAllTag')
             if(this.type === 'update') {
                 this.id = this.$route.params.id
                 this.$store.dispatch('getArticleDetail', { id: this.id })
@@ -54,10 +94,12 @@
 				})
             }
         },
+        mounted() {
+        },
         watch: {
             '$route': function(to, from) {
                 if(to.name !== 'articleEdit') return
-                 if(to.params.type === 'update') {
+                if(to.params.type === 'update') {
                     this.$store.dispatch('getArticleDetail', { id: this.$route.params.id })
                 } else if (to.params.type === 'create') {
                     this.type = this.$route.params.type
@@ -70,6 +112,7 @@
             }
         },
         methods: {
+            // 修改
             handleUpdate: function () {
                 this.$store.dispatch('updateArticle', this.articleDetail).then(res => {
                     if(res.code === 200) {
@@ -81,6 +124,7 @@
                 })
             },
 
+            // 发布
             handleCreate: function () {
                 this.$store.dispatch('createArticle', this.articleDetail).then(res => {
                     if(res.code === 200) {
@@ -90,7 +134,18 @@
                         this.$message.error(res.msg)
                     }
                 })
-            }
+            },
+
+            // 上传成功
+            handleUploadSuccess(res, file) {
+                if(res.code === 200) {
+                    this.$store.commit({
+                        type: 'merge',
+                        key: 'articleDetail',
+                        data: { cover: res.data.url}
+                    })
+                }
+            },
         },
     }
 </script>
@@ -100,5 +155,26 @@
         margin: 20px;
         min-width: 800px;
     }
-
+    .avatar-uploader {
+        font-size: 0;
+        color: #8c939d;
+        width: 78px;
+        height: 78px;
+        line-height: 76px;
+        text-align: center;
+        border: 1px solid #ebebeb;
+        border-radius: 3px;
+        transition: .2s;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        &:hover {
+            border-color: #409eff;
+        }
+        i {
+            font-size: 28px;
+            line-height: 76px;
+        }
+    }
 </style>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -19,19 +20,18 @@ class PostController extends Controller
     	$posts = Post::orderBy('id')
 			->offset($pageSize*($page-1))
 			->limit($pageSize)
-			->get(['id', 'title']);
+			->get(['id', 'title', 'cover']);
 
 		foreach($posts as $post) {
 			$id = $post->id;
 			$post['username'] = Post::find($id)->user->name;
+			$post['category_name'] = Post::find($id)->category->name;
 			$comments = Post::find($id)->comments()->get(['id', 'content', 'user_id']);
 			$tags = Post::find($id)->tags()->get(['tag_id', 'name', 'cover']);
 			$post['comment_num'] = count($comments);
 			if(count($comments) > 0){
 				foreach($comments as $comment) {
-					$comment['username'] = User::where('id', $comment->user_id)->first()->name;
-					// echo $comment->user_id;
-					// echo Post::find($comment->user_id)->comment_user;
+					$comment['username'] = User::find($comment->user_id)->first()->name;
 				}
 			}
 			$post['comment_list'] = $comments;
@@ -51,8 +51,11 @@ class PostController extends Controller
     // 文章详情
     public function show($id)
     {
-		$post = Post::where('id', $id)->get();
-		return jsonWrite(200, $post[0]);
+		$post = Post::where('id', $id)->first();
+		$post->category_id = (int)$post->category_id;
+		$post->tags = Post::find($id)->tags()->get(['tag_id', 'name', 'cover']);
+		$post->category_name = Post::find($id)->category->name;
+		return jsonWrite(200, $post);
     }
 
     // 修改
@@ -61,8 +64,18 @@ class PostController extends Controller
     	$post = [
 			'title' => request('title'),
 			'content' => request('content'),
+			'category_id' => request('category_id'),
+			'cover' => request('cover'),
 		];
-		Post::where('id', $id)->update($post);
+
+		$tags = request('tags');
+		$p = [];
+		foreach ($tags as $tag) {
+			array_push($p, ['tag_id' => $tag]);
+		}
+
+		Post::find($id)->tags()->where('post_id', $id)->sync($p);
+		Post::find($id)->update($post);
 		return jsonWrite(200, '修改成功');
     }
 
@@ -72,10 +85,23 @@ class PostController extends Controller
 		$post = [
 			'title' => request('title'),
 			'content' => request('content'),
+			'category_id' => request('category_id'),
+			'cover' => request('cover'),
 			'user_id' => \Auth::id()
 		];
-		Post::create($post);
-		return jsonWrite(200, '添加成功');
+
+		$tags = request('tags');
+		$p = [];
+		foreach ($tags as $tag) {
+			array_push($p, ['tag_id' => $tag]);
+		}
+
+		$id = Post::create($post)->id;
+
+		Post::find($id)->tags()->where('post_id', $id)->sync($p);
+		return jsonWrite(200, [
+			'id' => $id
+		]);
 	}
 
 	// 删除

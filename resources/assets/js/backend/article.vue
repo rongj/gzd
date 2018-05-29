@@ -9,14 +9,14 @@
 			<el-table :data="articleList.list" border style="width: 100%" class="table-align-center">
 				<el-table-column prop="id" label="#" width="50"></el-table-column>
 				<el-table-column prop="title" label="文章标题"></el-table-column>
-<!-- 				<el-table-column label="文章封面" class-name="item-icon">
+				<el-table-column prop="category_name" label="分类"></el-table-column>
+				<el-table-column label="文章封面" class-name="item-icon">
 					<template slot-scope="scope">
 						<img :src="scope.row.cover">
 					</template>
-				</el-table-column> -->
+				</el-table-column>
 				<el-table-column prop="username" label="作者" width="200"></el-table-column>
 				<el-table-column prop="comment_num" label="评论数" width="100"></el-table-column>
-				<!-- <el-table-column prop="updated_at" label="最后编辑时间"></el-table-column> -->
 				<el-table-column label="操作" width="400">
 					<template slot-scope="scope">
 						<el-button size="mini" @click="handleShow(scope.$index, scope.row.id)">查看</el-button>

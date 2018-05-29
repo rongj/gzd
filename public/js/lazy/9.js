@@ -282,6 +282,22 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
+                attrs: { prop: "category_name", label: "分类" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { label: "文章封面", "class-name": "item-icon" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [_c("img", { attrs: { src: scope.row.cover } })]
+                    }
+                  }
+                ])
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
                 attrs: { prop: "username", label: "作者", width: "200" }
               }),
               _vm._v(" "),

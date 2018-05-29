@@ -94,7 +94,7 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n.pit-common {\n  margin: 20px;\n  min-width: 800px;\n}\n", ""]);
+exports.push([module.i, "\n.pit-common {\n  margin: 20px;\n  min-width: 800px;\n}\n.avatar-uploader {\n  font-size: 0;\n  color: #8c939d;\n  width: 78px;\n  height: 78px;\n  line-height: 76px;\n  text-align: center;\n  border: 1px solid #ebebeb;\n  border-radius: 3px;\n  -webkit-transition: .2s;\n  transition: .2s;\n}\n.avatar-uploader img {\n    width: 100%;\n    height: 100%;\n}\n.avatar-uploader:hover {\n    border-color: #409eff;\n}\n.avatar-uploader i {\n    font-size: 28px;\n    line-height: 76px;\n}\n", ""]);
 
 // exports
 
@@ -137,6 +137,43 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -150,13 +187,16 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         return {
             type: 'create',
             href: location.href,
-            id: null
+            id: null,
+            tags: []
         };
     },
 
-    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapState */])(['articleDetail'])),
+    computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_2_vuex__["b" /* mapState */])(['articleDetail', 'categoryList', 'tagList'])),
     created: function created() {
         this.type = this.$route.params.type;
+        this.$store.dispatch('getAllCategory');
+        this.$store.dispatch('getAllTag');
         if (this.type === 'update') {
             this.id = this.$route.params.id;
             this.$store.dispatch('getArticleDetail', { id: this.id });
@@ -168,6 +208,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
         }
     },
+    mounted: function mounted() {},
 
     watch: {
         '$route': function $route(to, from) {
@@ -185,6 +226,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         }
     },
     methods: {
+        // 修改
         handleUpdate: function handleUpdate() {
             var _this = this;
 
@@ -198,6 +240,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
             });
         },
 
+        // 发布
         handleCreate: function handleCreate() {
             var _this2 = this;
 
@@ -209,6 +252,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
                     _this2.$message.error(res.msg);
                 }
             });
+        },
+
+        // 上传成功
+        handleUploadSuccess: function handleUploadSuccess(res, file) {
+            if (res.code === 200) {
+                this.$store.commit({
+                    type: 'merge',
+                    key: 'articleDetail',
+                    data: { cover: res.data.url }
+                });
+            }
         }
     }
 });
@@ -349,6 +403,114 @@ var render = function() {
                   expression: "articleDetail.title"
                 }
               })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: "类别" } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: { placeholder: "请选择类别" },
+                  model: {
+                    value: _vm.articleDetail.category_id,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleDetail, "category_id", $$v)
+                    },
+                    expression: "articleDetail.category_id"
+                  }
+                },
+                _vm._l(_vm.categoryList, function(item) {
+                  return _c("el-option", {
+                    key: item.name,
+                    attrs: { label: item.name, value: item.id }
+                  })
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: "标签" } },
+            [
+              _c(
+                "el-select",
+                {
+                  staticStyle: { width: "100%" },
+                  attrs: {
+                    multiple: "",
+                    filterable: "",
+                    "allow-create": "",
+                    "default-first-option": "",
+                    placeholder: "请选择标签"
+                  },
+                  model: {
+                    value: _vm.articleDetail.tags,
+                    callback: function($$v) {
+                      _vm.$set(_vm.articleDetail, "tags", $$v)
+                    },
+                    expression: "articleDetail.tags"
+                  }
+                },
+                _vm._l(_vm.tagList, function(item) {
+                  return _c("el-option", {
+                    key: item.id,
+                    attrs: { label: item.name, value: item.id }
+                  })
+                })
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            { attrs: { label: "封面" } },
+            [
+              _c(
+                "el-upload",
+                {
+                  staticClass: "avatar-uploader",
+                  attrs: {
+                    action: "/api/upload/img",
+                    name: "plate-cover",
+                    "show-file-list": false,
+                    "on-success": _vm.handleUploadSuccess
+                  }
+                },
+                [
+                  _c("img", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.articleDetail.cover,
+                        expression: "articleDetail.cover"
+                      }
+                    ],
+                    staticClass: "avatar",
+                    attrs: { src: _vm.articleDetail.cover }
+                  }),
+                  _vm._v(" "),
+                  _c("i", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: !_vm.articleDetail.cover,
+                        expression: "!articleDetail.cover"
+                      }
+                    ],
+                    staticClass: "el-icon-plus avatar-uploader-icon"
+                  })
+                ]
+              )
             ],
             1
           ),

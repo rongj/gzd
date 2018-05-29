@@ -28,11 +28,16 @@ const state = {
 		id: null,
 		title: '',
 		content: '',
-	}
+		category_id: null,
+		tags: [],
+		cover: ''
+	},
+	categoryList: [],
+	tagList: [],
 }
 
 const getters = {
-
+	// tags: state => state.articleDetail.tags.map(l => l.tag_id)
 }
 
 const actions = {
@@ -147,7 +152,10 @@ const actions = {
 				commit({
 					type: 'save',
 					key: 'articleDetail',
-					data: res.data.data
+					data: {
+						...res.data.data,
+						tags: res.data.data.tags.map(l => l.tag_id)
+					}
 				})
 			}
 		})
@@ -172,7 +180,33 @@ const actions = {
 		return api.deleteArticle(data).then(res => {
 			return res.data
 		})
-	}
+	},
+
+	// 所有类别
+	getAllCategory({ commit }) {
+		return api.getAllCategory().then(res => {
+			if(res.data.code === 200) {
+				commit({
+					type: 'save',
+					key: 'categoryList',
+					data: res.data.data
+				})
+			}
+		})
+	},
+
+	// 所有标签
+	getAllTag({ commit }) {
+		return api.getAllTag().then(res => {
+			if(res.data.code === 200) {
+				commit({
+					type: 'save',
+					key: 'tagList',
+					data: res.data.data
+				})
+			}
+		})
+	},
 }
 
 

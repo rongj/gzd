@@ -63,7 +63,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 			function($router) {
 				$router::get('/list', 'PostController@index');
 				$router::get('/show/{id}', 'PostController@show')->where('id', '[0-9]+');
-				$router::post('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
+				$router::any('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
 				$router::post('/create', 'PostController@create');
 				$router::post('/destroy/{id}', 'PostController@destroy')->where('id', '[0-9]+');
 			}
