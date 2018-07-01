@@ -13,12 +13,12 @@
 
 Route::get('/{path?}', function () {
     return view('index');
-})->where('path', '[^\/admin|^\/api].*');
+})->where('path', '^(?!admin|api).*');
 
-
+// ^(?!/manage).*$
 Route::get('/admin/{path?}', function (){
 	return view('admin');
-})->where('path', '[\/\w\.-]*');
+})->where('path', '.*');
 
 /* api */
 Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
@@ -41,18 +41,9 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 			}
 		);
 
-		Route::prefix('plate')->group(
-			function($router) {
-				$router->get('/all', 'PlateController@index');
-				$router->any('/add', 'PlateController@add');
-				$router->any('/update', 'PlateController@update');
-				$router->post('/delete/{id}', 'PlateController@delete');
-			}
-		);
-
 		Route::prefix('tag')->group(
 			function($router) {
-				$router->get('/all', 'TagController@index');
+				$router->get('/list', 'TagController@index');
 				$router->post('/create', 'TagController@create');
 				$router->post('/update/{id}', 'TagController@update')->where('id', '[0-9]+');
 				$router->post('/destroy/{id}', 'TagController@destroy')->where('id', '[0-9]+');

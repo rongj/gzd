@@ -5,7 +5,7 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
     font-style: normal;
     text-decoration: none;
     border: none;
-    font-family: "Microsoft Yahei",sans-serif;
+    font-family: Raleway, "Microsoft Yahei",sans-serif;
     -webkit-tap-highlight-color:transparent;
     -webkit-font-smoothing: antialiased;
     &:focus {
@@ -80,6 +80,29 @@ html,body{
 }
 a {
     color: #333;
+}
+
+.link {
+    position: relative;
+    display: inline-block;
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 1px;
+        background-color: #555;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        transform-origin: center center;
+        transform: scaleX(0);
+        transition: .3s;
+    }
+    &:hover {
+        &:after {
+            transform: scaleX(1);
+        }
+    }
 }
 
 @for $i from 1 through 6 {

@@ -17,7 +17,7 @@ window.Vue = require('vue');
 
 // Vue.component('example', require('./components/Example.vue'));
 
-import App from './App.vue'
+import Admin from './Admin.vue'
 import router from './router/admin'
 import store  from './store/admin'
 import ElementUI from 'element-ui'
@@ -29,6 +29,6 @@ const app = new Vue({
     el: '#app',
     router,
     store,
-    template: '<App/>',
-    components: { App }
+    template: '<Admin/>',
+    components: { Admin }
 });

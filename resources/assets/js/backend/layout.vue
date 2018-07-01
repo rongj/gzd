@@ -27,7 +27,6 @@
 					<el-submenu index="2">
 						<template slot="title"><i class="el-icon-menu"></i>分类管理</template>
 						<el-menu-item index="/category">所有分类</el-menu-item>
-						<el-menu-item index="/subplate">所有板块</el-menu-item>
 						 <el-menu-item index="/tag">所有标签</el-menu-item> 
 					</el-submenu>
 					<el-submenu index="3">

@@ -37,11 +37,6 @@ export default new Router({
 					name: 'category',
 				},
 				{
-					path: 'subplate',
-					component: resolve => require(['../backend/subplate.vue'], resolve),
-					name: 'subplate',
-				},
-				{
 					path: 'tag',
 					component: resolve => require(['../backend/tag.vue'], resolve),
 					name: 'tag',
