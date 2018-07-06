@@ -1,63 +1,45 @@
 <template>
 	<div class="main-content article-content">
 		<div class="main-left">			
-			详情页
-		</div>
-		<div class="main-right">
-			<div class="hot-article panel-item">
-				<h2 class="panel-item-title">热门文章</h2>
-				<div class="hot-article-list">
-					<ul>
-						<li><a href="" class="link">用webpack4带你实现一个vue的打包的项目用webpack4带你实现一个vue的打包的项目</a></li>
-						<li><a href="" class="link">用webpack4带你实现一个vue的打包的项目</a></li>
-						<li><a href="" class="link">用webpack4带你实现一个vue的打包的项目</a></li>
-						<li><a href="" class="link">用webpack4带你实现一个vue的打包的项目</a></li>
-					</ul>
-				</div>
+			<h3 class="article-title">{{articleDetail.title}}</h3>
+			<div class="article-info">
+				<span class="item-tags">
+					标签：
+					<router-link v-for="tag in articleDetail.tags" :key="tag.tag_id" :to="`/tag/${tag.tag_id}`" class="link">{{tag.name}}</router-link>
+				</span>
+				<span class="item-category">
+					分类：
+					<router-link :to="`/article/${articleDetail.category_id}`" class="link">{{articleDetail.category_name}}</router-link>
+				</span>
+				<span>{{articleDetail.created_at}}</span>
+				<span>{{articleDetail.read_num}}次阅读</span>
+				<span>{{articleDetail.comment_num}}条评论</span>
 			</div>
-
-			<div class="tags panel-item">
-				<h2 class="panel-item-title">标签</h2>
-				<div class="tags-list">
-					<a href="" v-for="(item, i) in tagList" :key="i" class="link">{{item.name}}({{item.count || 0}})</a>
-				</div>
-			</div>
+			<div class="markdown-body article-body" v-html="articleDetail.content"></div>
+	
 		</div>
+		<right-panel/>
 	</div>
 </template>
 
 <script>
+	import rightPanel from './rightPanel.vue'
 	import { mapState } from 'vuex'
 
 	export default {
 		computed: {
-			...mapState(['tagList']),
+			...mapState(['tagList', 'articleDetail']),
 		},
-		
+		components: { rightPanel },
 		created() {
-			this.$store.dispatch('getAllTag')
+			this.$store.dispatch('getArticleDetail', { id: this.$route.params.id })
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
-	.page-header-wrap {
-		display: none;
-	}
-	.page-header {
-		position: relative;
-		padding: 0 10px;
-		h2 {
-			font-size: 28px;
-			font-weight: 400;
-			font-family: Raleway;
-			padding-top: 4px;
-		}
-		.header-back {
-			color: #fff;
-			display: none;
-		}
-	}
+<style lang="scss">
+	@import url(https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css);
+	@import "../scss/monokai-sublime.scss";
 
 	.article-content {
 		display:flex;
@@ -73,36 +55,35 @@
 		}
 	}
 
-	.article-item {
-		padding: 24px 18px;
-		overflow: hidden;
+	.article-title {
+		font-size: 20px;
+		font-weight: 600;
+		text-align: center;
+		margin: 20px 0;
+	}
+
+	.article-info {
+		margin-top: 20px;
+		color: #8c8c8c;
+		font-size: 12px;
+		padding: 20px;
+		margin-bottom: 10px;
 		position: relative;
-		h2 {
-			margin-bottom: 15px;
-			font-size: 18px;
-			a {
-				font-weight: 400;
-				font-size: 20px;
+		span {
+			margin-right: 10px;
+			&:after {
+				content: '|';
+				margin-left: 10px;
+			}
+			&:last-child:after {
+				display: none;
+				content: '';
 			}
 		}
-		p {
-			line-height: 24px;
-			color: #666;
-		}
-		.item-info {
-			margin-top: 20px;
-			color: #8c8c8c;
-			font-size: 12px;
-			span {
-				margin-right: 10px;
-				&:after {
-					content: '|';
-					margin-left: 10px;
-				}
-				&:last-child:after {
-					display: none;
-					content: '';
-				}
+		.item-tags a {
+			margin-right: 10px;
+			&:last-child {
+				margin-right: 0;
 			}
 		}
 		&:after {
@@ -117,44 +98,11 @@
 		}
 	}
 
-	.panel-item {
-		margin-bottom: 20px;
-		padding-bottom: 20px;
-		position: relative;
-		.panel-item-title {
-			font-size: 16px;
-			margin-bottom: 10px;
-		}
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-			height: 1px;
-			background-color: #e8e8e8;
-			bottom: 0;
-			left: -15px;
-			width: 100px;
-		}
+	.article-body {
+		padding: 20px;
+		max-width: 1000px;
 	}
-	.hot-article-list {
-		li {
-			height: 40px;
-			line-height: 40px;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-		}
-		a {
-			font-size: 14px;
-			line-height: initial;	
-		}
-	}
-	
-	.tags-list {
-		a {
-			margin: 10px;
-		}
-	}
+
 
 	@media screen and (max-width: 768px) {
 		body {

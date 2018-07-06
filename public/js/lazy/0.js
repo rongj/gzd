@@ -242,7 +242,7 @@ var render = function() {
               _vm._v(" "),
               _c("span", [_vm._v(_vm._s(item.created_at))]),
               _vm._v(" "),
-              _c("span", [_vm._v(_vm._s(item.view_num) + "次阅读")]),
+              _c("span", [_vm._v(_vm._s(item.read_num) + "次阅读")]),
               _vm._v(" "),
               _c("span", [_vm._v(_vm._s(item.comment_num) + "条评论")])
             ])

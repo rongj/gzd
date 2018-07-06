@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "js/lazy/" + ({}[chunkId]||chunkId) + ".js?" + {"0":"6efc8de834108f4b1e4d","1":"2eafba14001e4dcdecc1","2":"7d84f4c7acdc9d4e66b9","3":"15780b369940046a7d74","4":"ef0b8527c9a0b14890a9","5":"372c07b602ffb2ceb41c"}[chunkId] + "";
+/******/ 		script.src = __webpack_require__.p + "js/lazy/" + ({}[chunkId]||chunkId) + ".js?" + {"6":"ce170514a720d8c6ffd0","7":"c31b87548e8a97fa7494","8":"8c8daf8160f8f2ce79d1","9":"55b9a5535f35b2d655ed","11":"d4368094eef6a685b693","12":"c0fb6c9f34c4d8dbed57","13":"4f2909f6b94cfc39dff7"}[chunkId] + "";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -15220,43 +15220,55 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 	routes: [{
 		path: '/',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(204)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(6/* duplicate */).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
-		name: 'home'
+		name: 'list'
 	}, {
 		path: '/category/:id',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(0/* duplicate */).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(6/* duplicate */).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'category'
 	}, {
 		path: '/tag/:id',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(0/* duplicate */).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(6/* duplicate */).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'tag'
 	}, {
 		path: '/article/:id',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(304)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(13).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(304)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'article'
 	}, {
+		path: '/categories',
+		component: function component(resolve) {
+			return __webpack_require__.e/* require */(12).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(334)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+		},
+		name: 'categories'
+	}, {
+		path: '/tags',
+		component: function component(resolve) {
+			return __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(335)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+		},
+		name: 'tags'
+	}, {
 		path: '/demo',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(4).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(305)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(11).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(305)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'demo'
 	}, {
 		path: '/project',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(2).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(306)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(9).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(306)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'project'
 	}, {
 		path: '/tool',
 		component: function component(resolve) {
-			return __webpack_require__.e/* require */(1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(307)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+			return __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(307)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
 		},
 		name: 'tool'
 	}]
@@ -15873,7 +15885,19 @@ var render = function() {
               _c(
                 "router-link",
                 { staticClass: "link", attrs: { to: "/", exact: "" } },
-                [_vm._v("归档")]
+                [_vm._v("首页")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                { staticClass: "link", attrs: { to: "/categories" } },
+                [_vm._v("分类")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                { staticClass: "link", attrs: { to: "/tags" } },
+                [_vm._v("标签")]
               ),
               _vm._v(" "),
               _c(
@@ -15886,12 +15910,6 @@ var render = function() {
                 "router-link",
                 { staticClass: "link", attrs: { to: "/tool" } },
                 [_vm._v("工具")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                { staticClass: "link", attrs: { to: "/demo" } },
-                [_vm._v("DEMO")]
               )
             ],
             1
@@ -15938,16 +15956,10 @@ var state = {
 		list: [],
 		currentPage: 1,
 		pageSize: 10,
-		totalCount: 0
+		totalCount: 0,
+		loading: false
 	},
-	articleDetail: {
-		id: null,
-		title: '',
-		content: '',
-		category_id: null,
-		tags: [],
-		cover: ''
-	},
+	articleDetail: {},
 	categoryList: [],
 	tagList: []
 };
@@ -16013,8 +16025,16 @@ var actions = {
 		var commit = _ref5.commit;
 		var _state$articleList = state.articleList,
 		    pageSize = _state$articleList.pageSize,
-		    currentPage = _state$articleList.currentPage;
+		    currentPage = _state$articleList.currentPage,
+		    loading = _state$articleList.loading;
 
+		commit({
+			type: 'merge',
+			key: 'articleList',
+			data: {
+				loading: true
+			}
+		});
 		var pageParams = {
 			pageSize: pageSize,
 			pageNum: currentPage
@@ -16030,7 +16050,8 @@ var actions = {
 						key: 'articleList',
 						data: {
 							list: d.dataList,
-							totalCount: d.pageInfo.totalCount
+							totalCount: d.pageInfo.totalCount,
+							loading: false
 						}
 					});
 				}
@@ -16050,11 +16071,7 @@ var actions = {
 				commit({
 					type: 'save',
 					key: 'articleDetail',
-					data: _extends({}, res.data.data, {
-						tags: res.data.data.tags.map(function (l) {
-							return l.tag_id;
-						})
-					})
+					data: res.data.data
 				});
 			}
 		});

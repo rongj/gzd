@@ -9,8 +9,8 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
-			component: resolve => require(['../frontend/home.vue'], resolve),
-			name: 'home',
+			component: resolve => require(['../frontend/list.vue'], resolve),
+			name: 'list',
 		},
 		{
 			path: '/category/:id',
@@ -26,6 +26,16 @@ export default new Router({
 			path: '/article/:id',
 			component: resolve => require(['../frontend/article.vue'], resolve),
 			name: 'article',
+		},
+		{
+			path: '/categories',
+			component: resolve => require(['../frontend/categories.vue'], resolve),
+			name: 'categories',
+		},
+		{
+			path: '/tags',
+			component: resolve => require(['../frontend/tags.vue'], resolve),
+			name: 'tags',
 		},
 		{
 			path: '/demo',

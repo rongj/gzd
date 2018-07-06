@@ -6,19 +6,19 @@ webpackJsonp([5],{
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(312)
+  __webpack_require__(331)
 }
 var normalizeComponent = __webpack_require__(48)
 /* script */
 var __vue_script__ = __webpack_require__(314)
 /* template */
-var __vue_template__ = __webpack_require__(315)
+var __vue_template__ = __webpack_require__(333)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-bb1c60aa"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -48,48 +48,6 @@ if (false) {(function () {
 })()}
 
 module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 312:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(313);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(49)("b3c51f66", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb1c60aa\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
-     var newContent = require("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb1c60aa\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 313:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(25)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.page-header-wrap[data-v-bb1c60aa] {\n  display: none;\n}\n.page-header[data-v-bb1c60aa] {\n  position: relative;\n  padding: 0 10px;\n}\n.page-header h2[data-v-bb1c60aa] {\n    font-size: 28px;\n    font-weight: 400;\n    font-family: Raleway;\n    padding-top: 4px;\n}\n.page-header .header-back[data-v-bb1c60aa] {\n    color: #fff;\n    display: none;\n}\n.article-content[data-v-bb1c60aa] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.article-content .main-left[data-v-bb1c60aa] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    background: #fff;\n}\n.article-content .main-right[data-v-bb1c60aa] {\n    width: 370px;\n    background: #fff;\n    padding: 15px;\n    margin-left: 30px;\n}\n.article-item[data-v-bb1c60aa] {\n  padding: 24px 18px;\n  overflow: hidden;\n  position: relative;\n}\n.article-item h2[data-v-bb1c60aa] {\n    margin-bottom: 15px;\n    font-size: 18px;\n}\n.article-item h2 a[data-v-bb1c60aa] {\n      font-weight: 400;\n      font-size: 20px;\n}\n.article-item p[data-v-bb1c60aa] {\n    line-height: 24px;\n    color: #666;\n}\n.article-item .item-info[data-v-bb1c60aa] {\n    margin-top: 20px;\n    color: #8c8c8c;\n    font-size: 12px;\n}\n.article-item .item-info span[data-v-bb1c60aa] {\n      margin-right: 10px;\n}\n.article-item .item-info span[data-v-bb1c60aa]:after {\n        content: '|';\n        margin-left: 10px;\n}\n.article-item .item-info span[data-v-bb1c60aa]:last-child:after {\n        display: none;\n        content: '';\n}\n.article-item[data-v-bb1c60aa]:after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    height: 1px;\n    background-color: #e8e8e8;\n    bottom: 0;\n    left: 0;\n    width: 150px;\n}\n.panel-item[data-v-bb1c60aa] {\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  position: relative;\n}\n.panel-item .panel-item-title[data-v-bb1c60aa] {\n    font-size: 16px;\n    margin-bottom: 10px;\n}\n.panel-item[data-v-bb1c60aa]:after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    height: 1px;\n    background-color: #e8e8e8;\n    bottom: 0;\n    left: -15px;\n    width: 100px;\n}\n.hot-article-list li[data-v-bb1c60aa] {\n  height: 40px;\n  line-height: 40px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.hot-article-list a[data-v-bb1c60aa] {\n  font-size: 14px;\n  line-height: initial;\n}\n.tags-list a[data-v-bb1c60aa] {\n  margin: 10px;\n}\n@media screen and (max-width: 768px) {\nbody[data-v-bb1c60aa] {\n    background: #fff;\n}\n.page-header-wrap[data-v-bb1c60aa] {\n    display: block;\n    height: 44px;\n    position: fixed;\n    width: 100%;\n    top: 0;\n    z-index: 11;\n}\n.page-header[data-v-bb1c60aa] {\n    height: 44px;\n    line-height: 44px;\n}\n.page-header h2[data-v-bb1c60aa] {\n      text-align: center;\n      padding-top: 0;\n      font-size: 20px;\n      font-weight: 600;\n}\n.page-header .el-icon-close[data-v-bb1c60aa], .page-header p[data-v-bb1c60aa] {\n      display: none;\n}\n.page-header .header-back[data-v-bb1c60aa] {\n      display: block;\n      position: absolute;\n      left: 10px;\n      top: 0;\n      font-size: 16px;\n}\n.page-header .header-back i[data-v-bb1c60aa] {\n        vertical-align: -1px;\n        margin-right: 3px;\n}\n.main-right[data-v-bb1c60aa] {\n    display: none;\n}\n}\n", ""]);
-
-// exports
 
 
 /***/ }),
@@ -130,20 +88,78 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(['tagList'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(['tagList', 'articleDetail'])),
 
 	created: function created() {
+		this.$store.dispatch('getArticleDetail', { id: this.$route.params.id });
 		this.$store.dispatch('getAllTag');
 	}
 });
 
 /***/ }),
 
-/***/ 315:
+/***/ 331:
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(332);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(49)("0dbbf47c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb1c60aa\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
+     var newContent = require("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-bb1c60aa\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+
+/***/ 332:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(25)(false);
+// imports
+exports.push([module.i, "@import url(https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css);", ""]);
+
+// module
+exports.push([module.i, "\n.hljs {\n  display: block;\n  overflow-x: auto;\n  padding: 0.5em;\n  background: #23241f;\n}\n.markdown-body pre code {\n  font-size: 14px;\n}\n.hljs,\n.hljs-tag,\n.hljs-subst {\n  color: #f8f8f2;\n}\n.hljs-strong,\n.hljs-emphasis {\n  color: #a8a8a2;\n}\n.hljs-bullet,\n.hljs-quote,\n.hljs-number,\n.hljs-regexp,\n.hljs-literal,\n.hljs-link {\n  color: #ae81ff;\n}\n.hljs-code,\n.hljs-title,\n.hljs-section,\n.hljs-selector-class {\n  color: #a6e22e;\n}\n.hljs-strong {\n  font-weight: bold;\n}\n.hljs-emphasis {\n  font-style: italic;\n}\n.hljs-keyword,\n.hljs-selector-tag,\n.hljs-name,\n.hljs-attr {\n  color: #f92672;\n}\n.hljs-symbol,\n.hljs-attribute {\n  color: #66d9ef;\n}\n.hljs-params,\n.hljs-class .hljs-title {\n  color: #f8f8f2;\n}\n.hljs-string,\n.hljs-type,\n.hljs-built_in,\n.hljs-builtin-name,\n.hljs-selector-id,\n.hljs-selector-attr,\n.hljs-selector-pseudo,\n.hljs-addition,\n.hljs-variable,\n.hljs-template-variable {\n  color: #e6db74;\n}\n.hljs-comment,\n.hljs-deletion,\n.hljs-meta {\n  color: #75715e;\n}\n.article-content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.article-content .main-left {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    background: #fff;\n}\n.article-content .main-right {\n    width: 370px;\n    background: #fff;\n    padding: 15px;\n    margin-left: 30px;\n}\n.article-title {\n  font-size: 20px;\n  font-weight: 600;\n  text-align: center;\n  margin: 20px 0;\n}\n.article-info {\n  margin-top: 20px;\n  color: #8c8c8c;\n  font-size: 12px;\n  padding: 20px;\n  margin-bottom: 10px;\n  position: relative;\n}\n.article-info span {\n    margin-right: 10px;\n}\n.article-info span:after {\n      content: '|';\n      margin-left: 10px;\n}\n.article-info span:last-child:after {\n      display: none;\n      content: '';\n}\n.article-info .item-tags a {\n    margin-right: 10px;\n}\n.article-info .item-tags a:last-child {\n      margin-right: 0;\n}\n.article-info:after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    height: 1px;\n    background-color: #e8e8e8;\n    bottom: 0;\n    left: 0;\n    width: 150px;\n}\n.article-body {\n  padding: 20px;\n}\n.panel-item {\n  margin-bottom: 20px;\n  padding-bottom: 20px;\n  position: relative;\n}\n.panel-item .panel-item-title {\n    font-size: 16px;\n    margin-bottom: 10px;\n}\n.panel-item:after {\n    content: \"\";\n    display: block;\n    position: absolute;\n    height: 1px;\n    background-color: #e8e8e8;\n    bottom: 0;\n    left: -15px;\n    width: 100px;\n}\n.hot-article-list li {\n  height: 40px;\n  line-height: 40px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n.hot-article-list a {\n  font-size: 14px;\n  line-height: initial;\n}\n.tags-list a {\n  margin: 10px;\n}\n@media screen and (max-width: 768px) {\nbody {\n    background: #fff;\n}\n.page-header-wrap {\n    display: block;\n    height: 44px;\n    position: fixed;\n    width: 100%;\n    top: 0;\n    z-index: 11;\n}\n.page-header {\n    height: 44px;\n    line-height: 44px;\n}\n.page-header h2 {\n      text-align: center;\n      padding-top: 0;\n      font-size: 20px;\n      font-weight: 600;\n}\n.page-header .el-icon-close, .page-header p {\n      display: none;\n}\n.page-header .header-back {\n      display: block;\n      position: absolute;\n      left: 10px;\n      top: 0;\n      font-size: 16px;\n}\n.page-header .header-back i {\n        vertical-align: -1px;\n        margin-right: 3px;\n}\n.main-right {\n    display: none;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ 333:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -151,7 +167,61 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "main-content article-content" }, [
-    _c("div", { staticClass: "main-left" }, [_vm._v("\t\t\t\n\t\t详情页\n\t")]),
+    _c("div", { staticClass: "main-left" }, [
+      _c("h3", { staticClass: "article-title" }, [
+        _vm._v(_vm._s(_vm.articleDetail.title))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "article-info" }, [
+        _c(
+          "span",
+          { staticClass: "item-tags" },
+          [
+            _vm._v("\n\t\t\t\t标签：\n\t\t\t\t"),
+            _vm._l(_vm.articleDetail.tags, function(tag) {
+              return _c(
+                "router-link",
+                {
+                  key: tag.tag_id,
+                  staticClass: "link",
+                  attrs: { to: "/tag/" + tag.tag_id }
+                },
+                [_vm._v(_vm._s(tag.name))]
+              )
+            })
+          ],
+          2
+        ),
+        _vm._v(" "),
+        _c(
+          "span",
+          { staticClass: "item-category" },
+          [
+            _vm._v("\n\t\t\t\t分类：\n\t\t\t\t"),
+            _c(
+              "router-link",
+              {
+                staticClass: "link",
+                attrs: { to: "/article/" + _vm.articleDetail.category_id }
+              },
+              [_vm._v(_vm._s(_vm.articleDetail.category_name))]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("span", [_vm._v(_vm._s(_vm.articleDetail.created_at))]),
+        _vm._v(" "),
+        _c("span", [_vm._v(_vm._s(_vm.articleDetail.read_num) + "次阅读")]),
+        _vm._v(" "),
+        _c("span", [_vm._v(_vm._s(_vm.articleDetail.comment_num) + "条评论")])
+      ]),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "markdown-body article-body",
+        domProps: { innerHTML: _vm._s(_vm.articleDetail.content) }
+      })
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "main-right" }, [
       _vm._m(0),

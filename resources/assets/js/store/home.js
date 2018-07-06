@@ -11,15 +11,9 @@ const state = {
 		currentPage: 1,
 		pageSize: 10,
 		totalCount: 0,
+		loading: false
 	},
-	articleDetail: {
-		id: null,
-		title: '',
-		content: '',
-		category_id: null,
-		tags: [],
-		cover: ''
-	},
+	articleDetail: {},
 	categoryList: [],
 	tagList: [],
 }
@@ -72,7 +66,14 @@ const actions = {
 	
 	// 获取文章列表
 	getArticleList({ commit }, data) {
-		let { pageSize, currentPage } = state.articleList;
+		let { pageSize, currentPage, loading } = state.articleList;
+		commit({
+			type: 'merge',
+			key: 'articleList',
+			data: {
+				loading: true
+			}
+		});
 		const pageParams = {
 			pageSize: pageSize,
 			pageNum: currentPage,
@@ -88,7 +89,8 @@ const actions = {
 						key: 'articleList',
 						data: {
 							list: d.dataList,
-							totalCount: d.pageInfo.totalCount
+							totalCount: d.pageInfo.totalCount,
+							loading: false
 						}
 					})
 				}
@@ -105,10 +107,7 @@ const actions = {
 				commit({
 					type: 'save',
 					key: 'articleDetail',
-					data: {
-						...res.data.data,
-						tags: res.data.data.tags.map(l => l.tag_id)
-					}
+					data: res.data.data,
 				})
 			}
 		})

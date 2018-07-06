@@ -61,6 +61,8 @@ class PostController extends Controller
 		$post->category_id = (int)$post->category_id;
 		$post->tags = Post::find($id)->tags()->get(['tag_id', 'name', 'cover']);
 		$post->category_name = Post::find($id)->category->name;
+		$comments = Post::find($id)->comments()->get(['id', 'content', 'user_id']);
+		$post->comment_num = count($comments);
 		return jsonWrite(200, $post);
     }
 
