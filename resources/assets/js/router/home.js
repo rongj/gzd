@@ -13,9 +13,14 @@ export default new Router({
 			name: 'home',
 		},
 		{
-			path: '/:type/:id',
+			path: '/category/:id',
 			component: resolve => require(['../frontend/list.vue'], resolve),
-			name: 'list',
+			name: 'category',
+		},
+		{
+			path: '/tag/:id',
+			component: resolve => require(['../frontend/list.vue'], resolve),
+			name: 'tag',
 		},
 		{
 			path: '/article/:id',

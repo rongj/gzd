@@ -6,11 +6,9 @@
 			<el-breadcrumb-item>文章详情</el-breadcrumb-item>
 		</el-breadcrumb>
 		<div class="main-content">
-			<h3>{{articleDetail.title}}</h3>
+			<h3 class="article-title">{{articleDetail.title}}</h3>
 			<span>{{articleDetail.username}}</span>
-			<br>
-			<br>
-			<p>{{articleDetail.content}}</p>
+			<div class="markdown-body" v-html="articleDetail.content"></div>
 		</div>
 	</div>
 </template>
@@ -29,6 +27,8 @@
 	}
 </script>
 <style lang="scss">
+	@import url(https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css);
+	@import "../scss/monokai-sublime.scss";
 	.table-align-center {
 		td, th{
 			text-align: center;
@@ -63,5 +63,12 @@
 			font-size: 28px;
 			line-height: 76px;
 		}
+	}
+	.article-title {
+		font-size: 20px;
+		font-weight: 700;
+		border-bottom: 1px solid #e8e8e8;
+		padding-bottom: 10px;
+		margin-bottom: 20px;
 	}
 </style>

@@ -107,6 +107,14 @@ function truncate_utf8_string($string, $length, $etc = '...')
     return $result;
 }
 
+// 字符串截取, 获取p标签内前n个字
+function substr_content($string, $length) {
+    $pattern = '/<p.*>(.*)<\/p>/';
+    preg_match($pattern, $string, $result);
+    
+    return !count($result) ? '' : substr($result[1], 0, $length);
+}
+
 // 根据邮箱后缀得到邮箱登录地址
 function getMailAddress($mailSuffix)
 {

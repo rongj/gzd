@@ -6,17 +6,6 @@ Vue.use(Vuex)
 import api from '../api/admin'
 
 const state = {
-	user: {
-		id: null,
-		username: '',
-	},
-	userList: {
-		list: [],
-		currentPage: 1,
-		pageSize: 10,
-		totalCount: 0,
-	},
-	userinfo: {},
 	articleList: {
 		list: [],
 		currentPage: 1,
@@ -80,51 +69,17 @@ const actions = {
 		})
 	},
 
-	// 获取用户列表
-	getUserList({ commit }) {
-		let { pageSize, currentPage } = state.userList;
-		api.getUserList({
-			pageSize: pageSize,
-			pageNum: currentPage
-		}).then(res => {
-			if(res.data.code === 200) {
-				let d = res.data.data;
-				if(d && d.dataList) {
-					commit({
-						type: 'merge',
-						key: 'userList',
-						data: {
-							list: d.dataList,
-							totalCount: d.pageInfo.totalCount
-						}
-					})
-				}
-			}
-		})
-	},
-
-	// 用户详情
-	getUserDetail({ commit }, data) {
-		api.getUserDetail({
-			id: data.id
-		}).then(res => {
-			if(res.data.code === 200) {
-				commit({
-					type: 'save',
-					key: 'userinfo',
-					data: res.data.data
-				})
-			}
-		})
-	},
-
+	
 	// 获取文章列表
-	getArticleList({ commit }) {
+	getArticleList({ commit }, data) {
 		let { pageSize, currentPage } = state.articleList;
-		api.getArticleList({
+		const pageParams = {
 			pageSize: pageSize,
-			pageNum: currentPage
-		}).then(res => {
+			pageNum: currentPage,
+		};
+		let params = data ? { ...pageParams, query: data.query, queryid: data.id}  : pageParams;
+
+		api.getArticleList(params).then(res => {
 			if(res.data.code === 200) {
 				let d = res.data.data;
 				if(d && d.dataList) {
@@ -156,27 +111,6 @@ const actions = {
 					}
 				})
 			}
-		})
-	},
-
-	// 修改文章
-	updateArticle({ commit }, data) {
-		return api.updateArticle(data).then(res => {
-			return res.data
-		})
-	},
-
-	// 添加文章
-	createArticle({ commit }, data) {
-		return api.createArticle(data).then(res => {
-			return res.data
-		})
-	},
-
-	// 删除文章
-	deleteArticle({ commit }, data) {
-		return api.deleteArticle(data).then(res => {
-			return res.data
 		})
 	},
 

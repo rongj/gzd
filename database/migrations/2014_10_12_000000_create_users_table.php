@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role_id')->default(2);
             $table->string('role_name')->default('普通用户');
+            $table->string('status')->default('active');
             $table->rememberToken();
             $table->timestamps();
         });

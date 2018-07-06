@@ -27,6 +27,7 @@ const state = {
 		id: null,
 		title: '',
 		content: '',
+		edit_content: '',
 		category_id: null,
 		tags: [],
 		cover: ''

@@ -1,18 +1,18 @@
-webpackJsonp([23],{
+webpackJsonp([30],{
 
-/***/ 216:
+/***/ 222:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(234)
+  __webpack_require__(258)
 }
 var normalizeComponent = __webpack_require__(48)
 /* script */
-var __vue_script__ = __webpack_require__(236)
+var __vue_script__ = __webpack_require__(260)
 /* template */
-var __vue_template__ = __webpack_require__(237)
+var __vue_template__ = __webpack_require__(261)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\backend\\users.vue"
+Component.options.__file = "resources\\assets\\js\\backend\\article.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-56e64e5e", Component.options)
+    hotAPI.createRecord("data-v-7203a87f", Component.options)
   } else {
-    hotAPI.reload("data-v-56e64e5e", Component.options)
+    hotAPI.reload("data-v-7203a87f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -52,23 +52,23 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 234:
+/***/ 258:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(235);
+var content = __webpack_require__(259);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(49)("4bc32313", content, false, {});
+var update = __webpack_require__(49)("17b49e00", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56e64e5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./users.vue", function() {
-     var newContent = require("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56e64e5e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./users.vue");
+   module.hot.accept("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7203a87f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue", function() {
+     var newContent = require("!!../../../../node_modules/._css-loader@0.28.11@css-loader/index.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7203a87f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/._sass-loader@6.0.7@sass-loader/lib/loader.js!../../../../node_modules/._vue-loader@13.7.1@vue-loader/lib/selector.js?type=styles&index=0!./article.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -79,7 +79,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 235:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(25)(false);
@@ -87,14 +87,14 @@ exports = module.exports = __webpack_require__(25)(false);
 
 
 // module
-exports.push([module.i, "\n.table-align-center td, .table-align-center th {\n  text-align: center;\n}\n.table-align-center th {\n  white-space: nowrap;\n}\n", ""]);
+exports.push([module.i, "\n.table-align-center td, .table-align-center th {\n  text-align: center;\n}\n.table-align-center th {\n  white-space: nowrap;\n}\n.item-icon img {\n  width: 40px;\n}\n.avatar-uploader {\n  font-size: 0;\n  color: #8c939d;\n  width: 78px;\n  height: 78px;\n  line-height: 76px;\n  text-align: center;\n  border: 1px solid #ebebeb;\n  border-radius: 3px;\n  -webkit-transition: .2s;\n  transition: .2s;\n}\n.avatar-uploader img {\n    width: 100%;\n    height: 100%;\n}\n.avatar-uploader:hover {\n    border-color: #409eff;\n}\n.avatar-uploader i {\n    font-size: 28px;\n    line-height: 76px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 236:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -137,33 +137,39 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(['userList', 'user'])),
+	computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_0_vuex__["b" /* mapState */])(['articleList', 'user'])),
 
 	created: function created() {
-		this.getUserList();
+		this.getArticleList();
 	},
 
 
 	methods: {
 		// 获取文章列表
-		getUserList: function getUserList() {
-			this.$store.dispatch('getUserList');
+		getArticleList: function getArticleList() {
+			this.$store.dispatch('getArticleList');
 		},
 
 		// 更改每页显示条数
 		handleSizeChange: function handleSizeChange(val) {
 			this.$store.commit({
 				type: 'merge',
-				key: 'userList',
+				key: 'articleList',
 				data: {
 					currentPage: 1,
 					pageSize: val
 				}
 			});
-			this.getUserList();
+			this.getArticleList();
 		},
 
 
@@ -171,24 +177,24 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 		handleCurrentChange: function handleCurrentChange(val) {
 			this.$store.commit({
 				type: 'merge',
-				key: 'userList',
+				key: 'articleList',
 				data: {
 					currentPage: val
 				}
 			});
-			this.getUserList();
+			this.getArticleList();
 		},
 
 
 		// 查看详情
 		handleShow: function handleShow(index, id) {
-			this.$router.push('userinfo/' + id);
+			this.$router.push('articleDetail/' + id);
 		},
 
-		// 编辑权限
+		// 编辑
 		handleEdit: function handleEdit(index, row) {
 			// if(row.user_id === this.user.id || this.user.id === 0) {
-			// this.$router.push('articleEdit/update/'+row.id)
+			this.$router.push('articleEdit/update/' + row.id);
 			// } else {
 			// this.$message.error('你没有编辑权限')
 			// }
@@ -209,13 +215,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 						if (_this.articleList.list.length === 1) {
 							_this.$store.commit({
 								type: 'merge',
-								key: 'userList',
+								key: 'articleList',
 								data: {
 									currentPage: _this.articleList.currentPage - 1
 								}
 							});
 						}
-						_this.getUserList();
+						_this.getArticleList();
 					} else {
 						_this.$message.error(res.msg);
 					}
@@ -227,7 +233,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 /***/ }),
 
-/***/ 237:
+/***/ 261:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -246,11 +252,11 @@ var render = function() {
             _vm._v("首页")
           ]),
           _vm._v(" "),
-          _c("el-breadcrumb-item", { attrs: { to: { path: "/users" } } }, [
-            _vm._v("用户管理")
+          _c("el-breadcrumb-item", { attrs: { to: { path: "/article" } } }, [
+            _vm._v("文章管理")
           ]),
           _vm._v(" "),
-          _c("el-breadcrumb-item", [_vm._v("用户列表")])
+          _c("el-breadcrumb-item", [_vm._v("文章列表")])
         ],
         1
       ),
@@ -264,7 +270,7 @@ var render = function() {
             {
               staticClass: "table-align-center",
               staticStyle: { width: "100%" },
-              attrs: { data: _vm.userList.list, border: "" }
+              attrs: { data: _vm.articleList.list, border: "" }
             },
             [
               _c("el-table-column", {
@@ -272,19 +278,35 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "name", label: "用户名" }
+                attrs: { prop: "title", label: "文章标题" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "email", label: "邮箱" }
+                attrs: { prop: "category_name", label: "分类" }
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { prop: "role_name", label: "用户权限" }
+                attrs: { label: "文章封面", "class-name": "item-icon" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "default",
+                    fn: function(scope) {
+                      return [_c("img", { attrs: { src: scope.row.cover } })]
+                    }
+                  }
+                ])
               }),
               _vm._v(" "),
               _c("el-table-column", {
-                attrs: { label: "操作" },
+                attrs: { prop: "username", label: "作者", width: "200" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { prop: "comment_num", label: "评论数", width: "100" }
+              }),
+              _vm._v(" "),
+              _c("el-table-column", {
+                attrs: { label: "操作", width: "400" },
                 scopedSlots: _vm._u([
                   {
                     key: "default",
@@ -296,11 +318,24 @@ var render = function() {
                             attrs: { size: "mini" },
                             on: {
                               click: function($event) {
+                                _vm.handleShow(scope.$index, scope.row.id)
+                              }
+                            }
+                          },
+                          [_vm._v("查看")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-button",
+                          {
+                            attrs: { size: "mini" },
+                            on: {
+                              click: function($event) {
                                 _vm.handleEdit(scope.$index, scope.row)
                               }
                             }
                           },
-                          [_vm._v("编辑权限")]
+                          [_vm._v("编辑")]
                         ),
                         _vm._v(" "),
                         _c(
@@ -324,18 +359,18 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _vm.userList.totalCount
+          _vm.articleList.totalCount
             ? _c(
                 "div",
                 { staticClass: "ss-page mt10" },
                 [
                   _c("el-pagination", {
                     attrs: {
-                      "current-page": _vm.userList.currentPage,
+                      "current-page": _vm.articleList.currentPage,
                       "page-sizes": [5, 10, 20, 50, 100],
-                      "page-size": _vm.userList.pageSize,
+                      "page-size": _vm.articleList.pageSize,
                       layout: "total, sizes, prev, pager, next, jumper",
-                      total: _vm.userList.totalCount
+                      total: _vm.articleList.totalCount
                     },
                     on: {
                       "size-change": _vm.handleSizeChange,
@@ -359,7 +394,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-56e64e5e", module.exports)
+    require("vue-loader/node_modules/vue-hot-reload-api")      .rerender("data-v-7203a87f", module.exports)
   }
 }
 

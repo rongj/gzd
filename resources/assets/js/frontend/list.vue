@@ -9,14 +9,21 @@
 	<div class="main-content article-content">
 		<div class="main-left">			
 			<div class="article-list">
-				<div class="article-item"  v-for="(item, i) in [1,2,3,4,5,6]" :key="i">
-					<h2><router-link :to="`/article/${i}`" class="link">一步步去阅读koa源码，中间件执行原理</router-link></h2>
-					<p>koa的中间件执行的流程控制，代码的是非常精妙的。koa的中间件执行的流程控制，代码的是非常精妙的。koa的中间件执行的流程控制，代码的是非常精妙的。</p>
+				<div class="article-item"  v-for="(item, i) in articleList.list" :key="item.id">
+					<h2><router-link :to="`/article/${item.id}`" class="link">{{item.title}}</router-link></h2>
+					<p>{{item.summary}}</p>
 					<div class="item-info">
-						<span>2018.05.14</span>
-						<span>67次阅读</span>
-						<span>0条评论</span>
-						<span>0人喜欢</span>
+						<span class="item-tags">
+							标签：
+							<router-link v-for="tag in item.tags" :key="tag.tag_id" :to="`/tag/${tag.tag_id}`" class="link">{{tag.name}}</router-link>
+						</span>
+						<span class="item-category">
+							分类：
+							<router-link :to="`/article/${item.category_id}`" class="link">{{item.category_name}}</router-link>
+						</span>
+						<span>{{item.created_at}}</span>
+						<span>{{item.view_num}}次阅读</span>
+						<span>{{item.comment_num}}条评论</span>
 					</div>
 				</div>
 			</div>
@@ -49,10 +56,13 @@
 
 	export default {
 		computed: {
-			...mapState(['tagList']),
+			...mapState(['tagList', 'articleList']),
 		},
 		
 		created() {
+			let { name, params: { id }} = this.$route;
+
+			this.$store.dispatch('getArticleList', { query: name, id })
 			this.$store.dispatch('getAllTag')
 		}
 	}
@@ -106,6 +116,7 @@
 		p {
 			line-height: 24px;
 			color: #666;
+			font-size: 14px;
 		}
 		.item-info {
 			margin-top: 20px;
@@ -120,6 +131,12 @@
 				&:last-child:after {
 					display: none;
 					content: '';
+				}
+			}
+			.item-tags a {
+				margin-right: 10px;
+				&:last-child {
+					margin-right: 0;
 				}
 			}
 		}

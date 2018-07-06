@@ -10,17 +10,23 @@ use App\Comment;
 class PostController extends Controller
 {
     // 文章列表
-    public function index()
+    public function index(Request $request)
     {
 		// $app = app();
 		// $log = $app->make('log');
 		// \Log::info("post_index", ['data', 'this is post index3']);
         $page = request()->get('pageNum');
         $pageSize = request()->get('pageSize');
-    	$posts = Post::orderBy('id')
+
+        $query = request()->get('query');
+
+		$posts = Post::orderBy('created_at', 'desc')
+			->when($query == 'category', function($q) {
+				return $q->where('category_id', request()->get('queryid'));
+			})
 			->offset($pageSize*($page-1))
 			->limit($pageSize)
-			->get(['id', 'title', 'cover']);
+			->get(['id', 'title', 'cover', 'summary', 'category_id', 'created_at']);
 
 		foreach($posts as $post) {
 			$id = $post->id;
@@ -34,16 +40,16 @@ class PostController extends Controller
 					$comment['username'] = User::find($comment->user_id)->first()->name;
 				}
 			}
-			$post['comment_list'] = $comments;
+			// $post['comment_list'] = $comments;
 			$post['tags'] = $tags;
 		}
 		
-		$totalCount = Post::count();
+		$totalCount = count($posts);
 		return jsonWrite(200, [
 			'dataList' => $posts,
 			'pageInfo' => [
 				'totalCount' => $totalCount,
-				'totalPage' => $totalCount 
+				'totalPage' => ceil($totalCount/$pageSize)
 			]
 		]);
     }
@@ -61,12 +67,16 @@ class PostController extends Controller
     // 修改
     public function update(Request $request, $id)
     {
+
     	$post = [
 			'title' => request('title'),
 			'content' => request('content'),
+			'edit_content' => request('edit_content'),
 			'category_id' => request('category_id'),
 			'cover' => request('cover'),
 		];
+
+		$post['summary'] = substr_content(request('content'), 300);
 
 		$tags = request('tags');
 		$p = [];
@@ -85,10 +95,13 @@ class PostController extends Controller
 		$post = [
 			'title' => request('title'),
 			'content' => request('content'),
+			'edit_content' => request('edit_content'),
 			'category_id' => request('category_id'),
 			'cover' => request('cover'),
 			'user_id' => \Auth::id()
 		];
+
+		$post['summary'] = substr_content(request('content'), 300);
 
 		$tags = request('tags');
 		$p = [];

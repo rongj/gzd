@@ -48,7 +48,7 @@
                 </el-upload>
             </el-form-item>
             <el-form-item label="内容" prop="markdown">
-                 <mavon-editor v-model="articleDetail.content"/>
+                 <mavon-editor v-model="articleDetail.edit_content" ref="editor" codeStyle="monokai-sublime"/>
             </el-form-item>
             <el-form-item>
                 <el-button>取 消</el-button>
@@ -114,7 +114,7 @@
         methods: {
             // 修改
             handleUpdate: function () {
-                this.$store.dispatch('updateArticle', this.articleDetail).then(res => {
+                this.$store.dispatch('updateArticle', Object.assign(this.articleDetail, { content: this.$refs.editor.d_render})).then(res => {
                     if(res.code === 200) {
                         this.$message.success(res.msg)
                         this.$router.push('/articleDetail/'+this.id)                        
@@ -126,7 +126,7 @@
 
             // 发布
             handleCreate: function () {
-                this.$store.dispatch('createArticle', this.articleDetail).then(res => {
+                this.$store.dispatch('createArticle', Object.assign(this.articleDetail, { content: this.$refs.editor.d_render})).then(res => {
                     if(res.code === 200) {
                         this.$message.success(res.msg)
                         this.$router.push('/articleDetail/'+res.data.id)                        
