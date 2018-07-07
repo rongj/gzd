@@ -34,7 +34,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 		
 		Route::prefix('category')->group(
 			function($router) {
-				$router->get('/all', 'CategoryController@index');
+				$router->get('/list', 'CategoryController@index');
+				$router->get('/show/{id}', 'CategoryController@show');
 				$router->post('/create', 'CategoryController@create');
 				$router->post('/update/{id}', 'CategoryController@update');
 				$router->post('/destroy/{id}', 'CategoryController@destroy');
@@ -44,6 +45,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 		Route::prefix('tag')->group(
 			function($router) {
 				$router->get('/list', 'TagController@index');
+				$router->get('show/{id}', 'TagController@show');
 				$router->post('/create', 'TagController@create');
 				$router->post('/update/{id}', 'TagController@update')->where('id', '[0-9]+');
 				$router->post('/destroy/{id}', 'TagController@destroy')->where('id', '[0-9]+');
@@ -53,9 +55,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'cors'], function() {
 		Route::prefix('post')->group(
 			function($router) {
 				$router::get('/list', 'PostController@index');
-				$router::get('/category/{id}', 'PostController@category');
-				$router::get('/tag/{id}', 'PostController@tag');
 				$router::get('/show/{id}', 'PostController@show')->where('id', '[0-9]+');
+				$router::get('/read/{id}', 'PostController@read')->where('id', '[0-9]+');
 				$router::any('/update/{id}', 'PostController@update')->where('id', '[0-9]+');
 				$router::post('/create', 'PostController@create');
 				$router::post('/destroy/{id}', 'PostController@destroy')->where('id', '[0-9]+');

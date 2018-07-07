@@ -5,11 +5,11 @@
 			<div class="article-info">
 				<span class="item-tags">
 					标签：
-					<router-link v-for="tag in articleDetail.tags" :key="tag.tag_id" :to="`/tag/${tag.tag_id}`" class="link">{{tag.name}}</router-link>
+					<router-link  v-for="tag in articleDetail.tags" :key="tag.tag_id" :to="{ name: 'list', query: { type: 'tag', id: tag.tag_id, name: tag.name }}" class="link">{{tag.name}}</router-link>
 				</span>
 				<span class="item-category">
 					分类：
-					<router-link :to="`/article/${articleDetail.category_id}`" class="link">{{articleDetail.category_name}}</router-link>
+					<router-link :to="{ name: 'list', query: { type: 'category', id: articleDetail.category_id, name: articleDetail.category_name }}" class="link">{{articleDetail.category_name}}</router-link>
 				</span>
 				<span>{{articleDetail.created_at}}</span>
 				<span>{{articleDetail.read_num}}次阅读</span>

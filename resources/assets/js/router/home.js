@@ -8,19 +8,9 @@ export default new Router({
 	// base: '/',
 	routes: [
 		{
-			path: '/',
+			path: '',
 			component: resolve => require(['../frontend/list.vue'], resolve),
 			name: 'list',
-		},
-		{
-			path: '/category/:id',
-			component: resolve => require(['../frontend/list.vue'], resolve),
-			name: 'category',
-		},
-		{
-			path: '/tag/:id',
-			component: resolve => require(['../frontend/list.vue'], resolve),
-			name: 'tag',
 		},
 		{
 			path: '/article/:id',

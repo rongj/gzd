@@ -14,8 +14,20 @@ class CategoryController extends Controller
 			->orderBy('id')
 			->get();
 
+        foreach ($categories as $category) {
+            $category['post_num'] = count($category->posts()->get());
+        }
+
 		return jsonWrite(200, $categories);
 	}
+
+    public function show(Request $request, $id)
+    {
+        $category = Category::where('id', $id)->first();
+        $posts = $category->posts;
+
+        return jsonWrite(200, $category);
+    }
 
     public function create()
     {

@@ -1,6 +1,6 @@
 <template>
 	<div class="main-right">
-		<div class="hot-article panel-item">
+<!-- 		<div class="hot-article panel-item">
 			<h2 class="panel-item-title">热门文章</h2>
 			<div class="hot-article-list">
 				<ul>
@@ -10,12 +10,19 @@
 					<li><a href="" class="link">用webpack4带你实现一个vue的打包的项目</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> -->
 
+		<div class="tags panel-item">
+			<h2 class="panel-item-title">分类</h2>
+			<div class="tags-list">
+				<router-link :to="{ name: 'list', query: { type: 'category', id: item.id, name: item.name }}" v-for="(item, i) in categoryList" :key="i" class="link">{{item.name}}({{item.post_num || 0}})</router-link>
+			</div>
+		</div>
+		
 		<div class="tags panel-item">
 			<h2 class="panel-item-title">标签</h2>
 			<div class="tags-list">
-				<router-link :to="`/tag/${item.id}`" v-for="(item, i) in tagList" :key="i" class="link">{{item.name}}({{item.count || 0}})</router-link>
+				<router-link :to="{ name: 'list', query: { type: 'tag', id: item.id, name: item.name }}" v-for="(item, i) in tagList" :key="i" class="link">{{item.name}}({{item.post_num || 0}})</router-link>
 			</div>
 		</div>
 	</div>
@@ -26,10 +33,11 @@
 
 	export default {
 		computed: {
-			...mapState(['tagList']),
+			...mapState(['tagList', 'categoryList']),
 		},
 		
 		created() {
+			this.$store.dispatch('getAllCategory')
 			this.$store.dispatch('getAllTag')
 		}
 	}

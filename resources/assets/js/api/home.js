@@ -15,10 +15,10 @@ const api = {
     register: data => axios.post(`passport/register`, data),
 
     // 获取所有类别
-    getAllCategory: () => axios.get(`category/all`),
- 
-    // 获取标签
-    getAllTag: data => axios.get(`tag/list`, { params: data }),
+    getAllCategory: () => axios.get(`category/list`),
+
+    // 获取所有标签
+    getAllTag: () => axios.get(`tag/list`),
 
     // 获取文章列表
     getArticleList: data => axios.get(`post/list`, { params: data }),

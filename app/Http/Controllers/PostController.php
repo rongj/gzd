@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Tag;
 use App\User;
 use App\Comment;
 
@@ -24,9 +25,12 @@ class PostController extends Controller
 			->when($query == 'category', function($q) {
 				return $q->where('category_id', request()->get('queryid'));
 			})
+			->when($query == 'tag', function($q) {
+				return Tag::where('id', request()->get('queryid'))->first()->posts();
+			})
 			->offset($pageSize*($page-1))
 			->limit($pageSize)
-			->get(['id', 'title', 'cover', 'summary', 'category_id', 'created_at']);
+			->get();
 
 		foreach($posts as $post) {
 			$id = $post->id;
@@ -63,6 +67,15 @@ class PostController extends Controller
 		$post->category_name = Post::find($id)->category->name;
 		$comments = Post::find($id)->comments()->get(['id', 'content', 'user_id']);
 		$post->comment_num = count($comments);
+		return jsonWrite(200, $post);
+    }
+
+    // 文章阅读
+    public function read($id)
+    {
+		$post = Post::where('id', $id)->first();
+		$post->read_num++;
+		$post->update(['updated_at' => $post->updated_at]);
 		return jsonWrite(200, $post);
     }
 

@@ -15,6 +15,11 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
+
+        foreach ($tags as $tag) {
+            $tag['post_num'] = count($tag->posts()->get());
+        }
+
         return jsonWrite(200, $tags);
     }
 
@@ -52,7 +57,10 @@ class TagController extends Controller
      */
     public function show($id)
     {
-        //
+        $tag = Tag::where('id', $id)->first();
+        // $tag->posts = $tag->posts()->get();
+
+        return jsonWrite(200, $tag);
     }
 
     /**

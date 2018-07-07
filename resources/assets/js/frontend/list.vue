@@ -7,7 +7,9 @@
 			</div>
 		</div> -->
 	<div class="main-content article-content">
-		<div class="main-left">			
+		<div class="main-left">
+			<div class="query-type" v-if="articleList.type">{{articleList.type === 'category' ? '分类' : '标签'}}：{{articleList.name}}</div>
+			<div class="query-type" v-else>所有文章</div>
 			<div class="article-list">
 				<div class="article-item"  v-for="(item, i) in articleList.list" :key="item.id">
 					<h2><router-link :to="`/article/${item.id}`" class="link">{{item.title}}</router-link></h2>
@@ -15,11 +17,11 @@
 					<div class="item-info">
 						<span class="item-tags">
 							标签：
-							<router-link v-for="tag in item.tags" :key="tag.tag_id" :to="`/tag/${tag.tag_id}`" class="link">{{tag.name}}</router-link>
+							<router-link  v-for="tag in item.tags" :key="tag.tag_id" :to="{ name: 'list', query: { type: 'tag', id: tag.tag_id, name: tag.name }}" class="link">{{tag.name}}</router-link>
 						</span>
 						<span class="item-category">
 							分类：
-							<router-link :to="`/article/${item.category_id}`" class="link">{{item.category_name}}</router-link>
+							<router-link :to="{ name: 'list', query: { type: 'category', id: item.category_id, name: item.category_name }}" class="link">{{item.category_name}}</router-link>
 						</span>
 						<span>{{item.created_at}}</span>
 						<span>{{item.read_num}}次阅读</span>
@@ -43,11 +45,23 @@
 		},
 
 		components: { rightPanel },
+
+		watch: {
+			'$route': function () {
+				this.getArticleList()
+			}
+		},
 		
 		created() {
-			let { name, params: { id }} = this.$route;
-			
-			this.$store.dispatch('getArticleList', { query: name, id })
+			this.getArticleList()
+		},
+
+		methods: {
+
+			getArticleList() {
+				let { query } = this.$route;
+				this.$store.dispatch('getArticleList', query)
+			}
 		}
 	}
 </script>
@@ -85,8 +99,24 @@
 		}
 	}
 
+	.query-type {
+		font-size: 16px;
+		padding: 20px;
+		position: relative;
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			height: 1px;
+			background-color: #e8e8e8;
+			bottom: 0;
+			left: 0;
+			width: 150px;
+		}
+	}
+
 	.article-item {
-		padding: 24px 18px;
+		padding: 20px;
 		overflow: hidden;
 		position: relative;
 		h2 {

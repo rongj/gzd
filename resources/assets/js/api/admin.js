@@ -30,7 +30,7 @@ const api = {
     destoryUser: data => axios.post(`user/update/${data.id}`),
 
     // 获取所有类别
-    getAllCategory: () => axios.get(`category/all`),
+    getAllCategory: () => axios.get(`category/list`),
 
 	// 添加类别
     addCategory: data => axios.post(`category/create`, data),

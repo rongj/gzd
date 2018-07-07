@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-import api from '../api/admin'
+import api from '../api/home'
 
 const state = {
 	articleList: {
@@ -11,7 +11,9 @@ const state = {
 		currentPage: 1,
 		pageSize: 10,
 		totalCount: 0,
-		loading: false
+		loading: false,
+		type: '',
+		name: '',
 	},
 	articleDetail: {},
 	categoryList: [],
@@ -71,14 +73,16 @@ const actions = {
 			type: 'merge',
 			key: 'articleList',
 			data: {
-				loading: true
+				loading: true,
+				type: data.type,
+				name: data.name
 			}
 		});
 		const pageParams = {
 			pageSize: pageSize,
 			pageNum: currentPage,
 		};
-		let params = data ? { ...pageParams, query: data.query, queryid: data.id}  : pageParams;
+		let params = data ? { ...pageParams, query: data.type, queryid: data.id}  : pageParams;
 
 		api.getArticleList(params).then(res => {
 			if(res.data.code === 200) {
@@ -138,6 +142,7 @@ const actions = {
 			}
 		})
 	},
+
 }
 
 
